@@ -1,0 +1,835 @@
+https://coderpad.io/E342ARHQ	Konnareddy Marthula
+https://coderpad.io/FHMAGMWR	Shubham Jyothi
+https://coderpad.io/CZEH7MJ3	Subrat
+https://coderpad.io/6RQX3W7E	Sunil Kumar
+https://coderpad.io/MFQ9HHYG	Maruthi
+https://coderpad.io/RT6NM74F	Neha Sharma
+https://coderpad.io/A4CMWF76	Ram
+https://coderpad.io/4D7N7H36	Divya
+https://coderpad.io/YDTF6FDY	Pinkini
+https://coderpad.io/WEJDMTR3	Sai Prabhu
+https://coderpad.io/RNZX3QNP	Dinesh Reddy
+https://coderpad.io/GZD4HDD4	Kganesh
+https://coderpad.io/WR72M2YK	Varun
+https://coderpad.io/R4RY6MAG	Amit Narayan
+https://coderpad.io/6HY4RFJM	Deepak
+https://coderpad.io/QQA7QYTX	Sunil Kumar
+https://coderpad.io/T9E3GE9J	Chaitra GS
+https://coderpad.io/2QJC3HW7	Avinash Tiwari
+https://coderpad.io/MQP6D6J9	Anuj Sharma
+https://coderpad.io/GCJ2FW62	Nitesh Kumar
+https://coderpad.io/FPJ2YG3X	Sarath Nandu
+https://coderpad.io/YKR3QTQZ	Mahesh Bacchu
+https://coderpad.io/JDTX2YMZ	Rohit
+https://coderpad.io/KJ9ZZYRX	Yogesh Singh
+https://coderpad.io/7WD6DRMY	UdayKumar
+https://coderpad.io/NT3Q4YPC	Garikapathi Varalakshmi
+https://coderpad.io/EH29ECMM	Aparna
+https://coderpad.io/QKWTA63N	Subash T
+https://coderpad.io/TRMC9EQ2	Divakar
+https://coderpad.io/PA6K62XC	Santhosh Saha
+https://coderpad.io/Q7N34PR2	Niliesh Singh
+https://coderpad.io/Y4QT6KTX	Kranthi
+
+	Narahari
+
+Divya
+
+/*
+ * 1. Find the 2nd Smallest number from array with one single for loop 
+ 2.merge sort of two arrays, sort, finding the index of an element in array which is nearest to given target.without using Java 8 feature or any built in sort or merge
+ a ={1,3,7,8} , b={2,6,9,10}
+ target = 5
+ 
+ */
+ 
+ 
+Konnareddy Marthula
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+
+ /**
+* Instructions to candidate.
+* 1) Run this code in the REPL to observe its behaviour. The
+*    execution entry point is main().
+* 2) Consider adding some additional tests in doTestsPass().
+* 3) Implement detectPanagram() correctly.
+* 4) If time permits, try to improve your implementation.
+*/
+ /*
+  Check the given String is Panagram or Not.
+A. Check the string is Panagram or not
+*/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public static void main(String[] args) {
+        doTestsPass();
+    }
+
+    public static boolean detectPanagram(String str) {
+        
+    }
+
+    public static boolean doTestsPass() {
+        String[] testStrings = {
+            "The quick brown fox jumps over the lazy dog", 
+            "The quick brown fox jumps"
+          };
+
+        boolean[] expectedResults = {
+            true,
+            false
+        };
+
+        boolean testsPassed = true;
+
+        for (int i = 0; i < testStrings.length; i++) {
+            boolean result = detectPanagram(testStrings[i]);
+            if (result != expectedResults[i]) {
+                System.out.println("Test failed for: \"" + testStrings[i] + "\". Expected: " + expectedResults[i] + ", Got: " + result);
+                testsPassed = false;
+            }
+        }
+
+        if (testsPassed) {
+            System.out.println("All tests pass");
+        } else {
+            System.out.println("Some tests fail");
+        }
+
+        return testsPassed;
+    }
+}
+Kranthi
+
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+import org.checkerframework.checker.units.qual.s;
+
+
+/*
+ *You are an avid rock collector who lives in southern California. Some rare
+** and desirable rocks just became available in New York, so you are planning
+** a cross-country road trip. There are several other rare rocks that you could
+** pick up along the way.
+** You have been given a grid filled with numbers, representing the number of
+** rare rocks available in various cities across the country. Your objective
+** is to find the optimal path from So_Cal to New_York that would allow you to
+** accumulate the most rocks along the way.
+** Note: You can only travel either north (up) or east (right).
+** {{0,0,0,0,5}, New_York (finish) N
+** {0,1,1,1,0}, < W E >
+** So_Cal (start) {2,0,0,0,0}} S
+** v
+** The total for this example would be 10 (2+0+1+1+1+0+5)."" "
+ */
+
+//  [
+//   [0,0,0,0,5],
+//   [0,1,1,1,0],
+//   [2,0,0,0,0]
+//  ]
+
+class Solution {
+  public static int getMaximumRocks(int[][]arr){
+    
+  }
+  public static void main(String[] args) {
+
+    int[][] arr= { 
+              {0,0,0,0,5},
+              {0,1,1,1,0},
+              {2,0,0,0,0}
+              };
+
+int res = getMaximumRocks(arr);
+System.out.println(res);
+   
+  }
+}
+
+Ram
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
+
+/*
+  // Given an array of numbers (positive and negative), move all the positive numbers to the end of the array and the negative numbers to the beginning of the array. Order does not matter.
+ 
+// Eg: Input = [3,-2,1,-1,4,9,-6]   Output = [-2,-1,-6,3,1,4,6]
+
+2. Java 8 code to get the second non-repeated char from String
+input: Success  expected output: e
+
+ */
+
+class Solution {
+  public static void main(String[] args) {
+
+   
+
+  }
+}
+
+Kganesh
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
+
+/*
+ *  Given a list of words, group them by anagrams
+ i/p: List of """"cat"""",""""dog"""", """"god""""
+ o/p: A set of sets of Anagrams: {{""""cat""""},{""""dog"""",""""god""""}}"
+
+ */
+
+class Solution {
+  public static void main(String[] args) {
+   
+
+
+
+ 
+  }
+}
+
+Deepak
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * 
+ *For the given string such as "aabbbbbcc" print the longest occurring character,index and number of times it occurs.
+Ex: longest occurring character is b and length is 5 at index 2.
+ */
+
+class Solution {
+
+  public static void main(String[] args) {
+
+    String charString="aabbbbbcc";
+    Map<Character,Integer> charMap=new TreeMap<Character,Integer>();
+    char[] charArray=new char[charString.length()];
+    for(int j=0;j<charString.length();j++){
+      charArray[j]=charString.charAt(j);
+    }
+    for(int i=0;i<charArray.length;i++){
+      if(charMap.containsKey(charArray[i])){
+          charMap.put(charArray[i], charMap.get(charArray[i]) + 1);
+    }else{
+      charMap.put(charArray[i], 1);
+    }
+    }
+for(Map.Entry<Character, Integer> entry :charMap.entrySet()){
+
+Map.Entry<Character, Integer> entry1=null; 
+if(entry1==null || entry.getValue().compareTo(entry1.getValue()) > 0){
+  entry1=entry;
+}
+ 
+ System.out.println(entry1);
+}
+}
+}
+
+Chaitra
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * Given two arrays. Arr1 = {1,2,3,8}, arr2 = {5,6,4,7}. Find a number from each array to be interchanged to reach a common sum of all elements for both arrays. Output: {1,5} or {3,7} or {2,6} 
+ */
+
+class Solution {
+
+
+}
+
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * Find the median of two sorted arrays of different size.
+Example:
+Input :
+Array 1: 2 3 6 7 9
+Array 2: -1 4 8 10  = 5
+Output : 6
+Hint: The final sorted array would be -1, 2, 3, 4, 6, 7, 8, 9, 10 The 5th element of this array is 6. "
+
+ */
+
+class Solution {
+
+public static int fun1(int [] arr){
+
+for(int i=0; i<arr.length; i++){
+  
+}
+
+   
+
+  }
+}
+
+Anuj
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ *  Write a Java Program to Find missing Number in an Array
+ * int[] arr={1,2,3,5,6,8}
+ missing numbers : 4,7
+
+ "6. You are an avid rock collector who lives in southern California. Some rare
+** and desirable rocks just became available in New York, so you are planning
+** a cross-country road trip. There are several other rare rocks that you could
+** pick up along the way.
+** You have been given a grid filled with numbers, representing the number of
+** rare rocks available in various cities across the country. Your objective
+** is to find the optimal path from So_Cal to New_York that would allow you to
+** accumulate the most rocks along the way.
+** Note: You can only travel either north (up) or east (right).
+** {{0,0,0,0,5}, New_York (finish) N
+** {0,1,1,1,0}, < W E >
+** So_Cal (start) {2,0,0,0,0}} S
+** v
+** The total for this example would be 10 (2+0+1+1+1+0+5)."" "
+
+
+ */
+
+class Solution {
+ 
+
+  public static void main(String[] args){
+        //Solution one input
+        int[] arr = new int[]{1,2,3,5,6,8};
+
+        //Solution two input
+        int[][] grid = {
+          {2,0,0,0,0},
+          {0,1,1,1,0},
+          {0,0,0,1,5},
+          {0,0,0,0,5},
+          };
+       
+        System.out.println(getMissingIntegers(arr));
+
+        System.out.println(maxRocks(grid));
+  }
+
+  public static List<Integer> getMissingIntegers(int[] arr) {
+    int maxNum = Integer.MIN_VALUE;
+       for(int i = 0; i < arr.length; i++) {
+          if (maxNum < arr[i]) {
+            maxNum = arr[i];
+          }
+        }
+
+
+        int[] countArray = new int[maxNum + 1];
+
+        for(int i = 0; i < arr.length; i++) {
+          countArray[arr[i]] += 1;
+        }
+
+         
+
+        List<Integer> missingNumber = new ArrayList<>();
+        for(int i = 1; i < countArray.length; i++) {
+          if(countArray[i] < 1) {
+            missingNumber.add(i);
+          }
+        }
+
+        return missingNumber;
+
+  }
+
+  public static int maxRocks(int[][] grid) {
+
+    if(grid == null || grid.length == 0 || grid[0].length == 0) {
+      return 0;
+    }
+    int m = grid.length;
+    int n = grid[0].length;
+
+    int[][] dp = new int[m][n];
+
+    dp[0][0] = grid[0][0];
+
+    for (int i = 1; i < n; i++) {
+      dp[0][i] = dp[0][i - 1] + grid[0][i];
+    }
+
+    for (int j = 1; j < m; j++) {
+      dp[j][0] = dp[j - 1][0] + grid[j][0];
+    }
+
+    for (int i = 1; i < m; i++) {
+      for (int j = 1; j < n; j++) {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1] + grid[i][j]);
+      }
+    }
+    return dp[m - 1][n - 1];
+  }
+}
+
+Nitesh
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+
+
+/*
+ *
+  Given an unsorted array A of size N, find a continuous sub-array which  sums up to S.
+For example if the input array is [ 12,7,29,6, 2, 11,4,8] and the  expected sum is 8, then there are two possibilities [6,2] and [8]
+if the expected sum is 19 there are two possibilites [12,7] and [6,2,11].  [11,8] is not a possibility since its not continous.
+ */
+
+class Solution {
+
+
+  public static void main(String[] args) {
+  
+ 
+  
+}
+}
+
+Sarath
+
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.IntStream;
+
+/*
+ *  Given two sorted arrays, the task is to merge them in a sorted manner . with out using Java 8 or inbuilt methods
+Example:1
+Input: arr1[] = { 1, 3, 4, 5}, arr2[] = {2, 4, 6, 8}
+Output: arr3[] = {1, 2, 3, 4, 4, 5, 6, 8}
+Example 2:
+Input: arr1[] = { 3,7,9,12,21}, arr2[] = {6,8,15,18,27}
+Output: arr3[] = {3,6,7,8,9,12,15,18,21,27}
+Example 3:
+Input: arr1[] = { 3,7,9,-12,21,12}, arr2[] = {6,8,15,-18,27}
+Output: arr3[] = {-18,-12,3,6,7,8,9,12,1521,27}
+Time complexity: O(n1+n2) where n1 and n2 are size of each array."
+
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    int [] arr1 = { 1, 3, 4, 5};
+    int [] arr2 = {2, 4, 6, 8};
+    int [] arr3 = new int [8];
+    int temp=arr1.length-1;
+for(int i=0; i< arr2.length; i++){
+  arr1[temp]= arr2[i];
+temp++;
+}
+for(int j=0; j<arr1.length;j++){
+  arr3[j]=arr1[j];
+}
+   
+for(int k=0; k<arr1.length; k++){
+System.out.println(arr1[k]);
+}  
+
+
+  }
+}
+Mahesh-
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.Stream;
+
+/*
+ * 
+ Problem Statement:
+*
+*Given a list of Strings, and an external order in which it needs to be sorted, Sort the given list of *strings.
+*For example:
+*Input Strings :  """"Ajay"""", """"Raja"""", """"Keshav"""", """"List"""", """"Set"""", """"Elephant"""", """"Drone""""
+*Sort order:  TESARDLK
+*Sorted Strings: """"Elephant"""", """"Set"""",""""Ajay"""", """"Raja"""", """"Drone"""",""""List"""",""""Keshav"""""
+
+ */
+
+class Solution {
+
+  public static void main(String[] args) {
+   
+    }
+}
+
+
+Raju
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ *  Print the repeated top 5,10 words in decending order from the the below paragraph.
+input : """"Sunset is the time of day when our sky meets the outer space solar winds. There are blue, pink, and purple swirls, spinning and twisting, like clouds of balloons caught in a whirlwind. The sun moves slowly to hide behind the line of horizon, while the moon races to take its place in prominence atop the night sky. People slow to a crawl, entranced, fully forgetting the deeds that must still be done. There is a coolness, a calmness, when the sun does set.""""
+example:
+the=7, a=4, of=3, to=3, when=2, There=2, in=2, is=2, sun=2, and=2"""
+
+   For a given input 2D array of strings, find the maximum average grade, round off to the nearest floor integer.
+
+Input :                 {  {"Rohit", "85"},
+                                {"Rahul", "80"},
+                                {"Amit","85"},
+                                {"Rohit", "90"}   }
+
+Output : 87
+Logic : Rohit's average grade is (85+90)/2 = 87.5  which when rounded off to floor is  87
+
+ */
+import java.io.*;
+import java.util.*;
+class Solution {
+  public static void main(String[] args) {
+  
+  }
+
+  } 
+ 
+ /*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * Add two fraction a/b and c/d and print answer in simplest form.
+
+Examples :
+
+Input:  1/2 + 3/2
+Output: 2/1
+
+Input:  1/3 + 3/9
+Output: 2/3
+
+Input:  1/5 + 3/15
+Output: 2/5
+ */
+
+class Solution {
+  public static void main(String[] args) {
+    int n1=1/2;
+    int num3=3/2;
+  }
+}
+
+Uday
+
+
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
+/*
+ *Implement the method that provided numerator and denominator will return a string representing fraction's decimal form.
+   * Some fractions in decimal form have cyclic decimal points.
+   *
+   * Examples:
+   * 1/2 = 0.5
+   * 1/3 = 0.(3)""
+  * 50/22 = 2.(27)"
+
+ */
+
+class Solution {
+  public static void main(String[] args) {
+
+    System.out.println(numericFunction(0.5));
+
+  }
+
+  private static char[] numericFunction(double input) {
+
+    int sum = 0;
+
+    double d = sum / 2;
+
+    for(int i=1; i< input;i++){
+
+      for(int j=1; j<i; j++){
+
+        sum = sum + i;
+      }
+        
+
+    }
+
+  return sum;
+
+	
+}
+
+
+}
+Garika
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
+
+
+
+/*
+ "24. Problem Statement:
+*
+*Given a list of Strings, and an external order in which it needs to be sorted, Sort the given list of *strings.
+*For example:
+*Input Strings :  """"Ajay"""", """"Raja"""", """"Keshav"""", """"List"""", """"Set"""", """"Elephant"""", """"Drone""""
+*Sort order:  TESARDLK
+*Sorted Strings: """"Elephant"""", """"Set"""",""""Ajay"""", """"Raja"""", """"Drone"""",""""List"""",""""Keshav"""""
+
+ */
+
+class Solution {  
+  public static void main(String[] args){
+   
+      
+    }
+  }
+
+Aparna
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+1. Given an unsorted array A of size N, find a continuous sub-array which  sums up to S.
+For example if the input array is [ 12,7,29,6, 2, 11,4,8] and the  expected sum is 8, then there are two possibilities [6,2] and [8]
+if the expected sum is 19 there are two possibilites [12,7] and [6,2,11].  [11,8] is not a possibility since its not continous."
+
+2. Given the arrival and departure times of all trains that reach a railway station, the task is to find the minimum number of platforms required for the railway station so that no train waits. We are given two arrays that represent the arrival and departure times of trains that stop.
+Examples: 
+Input: arr[] = {9:00, 9:40, 9:50, 11:00, 15:00, 18:00}, dep[] = {9:10, 12:00, 11:20, 11:30, 19:00, 20:00} 
+Output: 3 
+Explanation: There are at-most three trains at a time (time between 9:40 to 12:00)
+
+Input: arr[] = {9:00, 9:40}, dep[] = {9:10, 12:00} 
+Output: 1 
+
+
+ */
+
+class Solution {
+ 
+
+ 
+
+}
+Subash-
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/*
+rint the repeated top 5,10 words in decending order from the the below paragraph.
+input : """"Sunset is the time of day when our sky meets the outer space solar winds. There are blue, pink, and purple swirls, spinning and twisting, like clouds of balloons caught in a whirlwind. The sun moves slowly to hide behind the line of horizon, while the moon races to take its place in prominence atop the night sky. People slow to a crawl, entranced, fully forgetting the deeds that must still be done. There is a coolness, a calmness, when the sun does set.""""
+example:
+the=7, a=4, of=3, to=3, when=2, There=2, in=2, is=2, sun=2, and=2"""
+
+ */
+
+class Solution {
+  public static void main(String[] args) {
+
+    String input = "Sunset is the time of day when our sky meets the outer space solar winds. There are blue, pink, and purple swirls, spinning and twisting, like clouds of balloons caught in a whirlwind. The sun moves slowly to hide behind the line of horizon, while the moon races to take its place in prominence atop the night sky. People slow to a crawl, entranced, fully forgetting the deeds that must still be done. There is a coolness, a calmness, when the sun does set.";
+
+    String[] inputArr = input.split(" ");
+
+ 
+
+   
+
+}
+
+}
+Divakar
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * "29. Given an integer array of size n. Elements of the array is >= 0. Starting from arr[startInd], follow each element to the index it points to. Find a cycle and return its length. No cycle is found -> -1.
+lengthOfCycle([1, 0], 0); // 2
+lengthOfCycle([1, 2, 0], 0); // 3
+lengthOfCycle([1, 2, 3, 1], 0); // 3"
+
+2. Given a list of words, group them by anagrams
+ i/p: List of ""cat"",""dog"", ""god""
+ o/p: A set of sets of Anagrams: {{""cat""},{""dog"",""god""}}
+
+ */
+
+class Solution {
+  public static int lengthOfCycle(int[] arr,int startInd){
+    Map<Integer,Integer> map=new HashMap<>();
+    int index=startInd;
+    int step=0;
+    while(index>=0 && index<arr.length)
+    {
+      if(map.containsKey(index))
+      {
+        return step-map.get(index);
+      }
+      map.put(index,step);
+      index=arr[index];
+      step++;
+    }
+    return -1;
+
+  }
+  public static Set<Set<String>> listData(List<String> words)
+  {
+   Map<String,List<String>> map=new HashMap<>();
+   for(String word: words  {
+    char[] charr=word.toCharArray();
+    String sort=new String(charr);
+    map.computeIfAbsent(sort,k->new ArrayList<>()).add(word);
+   }
+   Set<Set<String>> result=new HashSet<>();
+    for(List<String> ana:map.values())
+    {
+      result.add(new HashSet<>(ana));
+    }
+    return result;
+  }
+
+  public static void main(String[] args) {
+
+    int[] arr={1, 2, 3, 1};
+    int startInd=0;
+    System.out.println(lengthOfCycle(arr, startInd));
+    List<String> words=Arrays.asList("cat","dog","god");
+    Set<Set<String>> anagrams=listData(words);
+    System.out.println("data is..."+anagrams);
+  }
+}
+
+Santosh
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ "Capgemini offers live fitness classess throughout the day tagught by its many talented instructors. Suppose we are given a list of the start and end times of the classes in a particular day, represented this
+ {{1,5},{3,6},{8,9}}
+ In this format, each pair of numbers corresponds to one class. The first number in each pair is the start time of the class. The second number is the end time of the class. Write a method that return true if classes in the list overlap or false otherwise.
+ For example , given the above list your function should return true because there is an overlap between [1,5] and [3,6]
+ {{1,2},{3,4},{5,6}} -- output : false
+ {{1,5},{3,6},{8,9}} -- ouput : true"
+
+ */
+
+class Solution {
+  
+
+  
+}
+
+Nilesh
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ *20.  find the kth smallest element using appropriate data structure(Priority Queue - min-heap/maxheap concept)
+
+ */
+
+class Solution {
+  public static void main(String[] args) {
+   
+
+   
+  }
+}
+
+
