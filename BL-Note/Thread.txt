@@ -1,0 +1,72 @@
+Thread -
+-------------
+1- Create Thread in 3 ways
+	By extending java.lang.Thread class
+	By implementing java.lang.Runnable interface
+	By implementing Callable interface.
+	
+2- java reentrantlock vs synchronized
+	- reentrantlock- 
+		private final ReentrantLock lock = new ReentrantLock();
+	- for shared resource we have to lock - lock.lock() and to release lock lock.unlock()
+		ex-
+		public void performTask() {
+        lock.lock();  // Acquire the lock
+        try {
+            // Critical section
+            System.out.println(Thread.currentThread().getName() + " is performing a task.");
+        } finally {
+            lock.unlock();  // Always release the lock in a finally block
+        }
+		}
+	
+	- as many no of times we lock that many times we have to unlock otherwise it will never unlock
+	- onece the object is locked it can be locked again(if the same mthod called recursively - after lock called if it call to same method again)
+	
+	- Synchronized block called inside a method to protect shared resouce. but reentrantlock can be lock in one method and unlock different method.
+	
+	
+
+3- countdownlatch and cyclicbarrier - no of thread assigned but here it wait a point where all the thread reach the point(barrier.await())
+   - countdownlatch - no of thread assigned. 
+   - CountDownLatch to ensure that a main task waits for countdownlatch threads to complete before proceeding
+   
+   - cyclicbarrier - no of thread assigned but here it wait a point where all the thread reach the point(barrier.await())
+   - Once complete all the therads it can reassign threds
+   
+
+4- Mutual exclusion lock
+
+5- Object level locking and class level locking
+	- Object level locking  - only synchronized method use
+	- Class level locking - static synchronized method
+	https://www.youtube.com/watch?v=C8a1uJ1RQIg
+	// Class level lock acquire class monitor/lock.
+    // So when one thread(object) acquire class loevel lock, it wont allow to other thread to access
+
+    // If 2 threads run same object methods, we need object level lock for sync
+		- Mythread t1= new Mythread(); 
+		Mythread t2 = t1;
+		t1.start();
+		t2.start();
+		
+    // If 2 threads run different object methods, we need class level lock
+		- Mythread t1= new Mythread(); 
+		Mythread t2 = new Mythread();
+		t1.start();
+		t2.start();
+	
+6- Semaphore
+	- Specify no of threads can acquire service at a times
+	- Semaphore s = new Semaphore(3) // only 3 threads are allowed to access the service
+	- It uses s.acquire() method to acquire the thread for the service and s.release() used for release thread
+	
+7- Priority blocking queue
+8- How can we stop a thread 
+	-No, we can not stop a thread by program
+	- we can stop a Executer thread. 
+		ExecuterService tpool = Executers.newFixedThreadPool(5);
+		tpool.submit(() -> { ..............});
+		tpool.shutdown() or tpool.shutdownNow();
+
+

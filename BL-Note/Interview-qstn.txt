@@ -1,0 +1,373 @@
+Here are some core Java interview questions that are suitable for someone with 10 years of experience:
+
+
+
+
+
+22- What is the difference between fail-fast and fail-safe iterators?
+
+
+24- How does the HashMap work internally?
+
+25- What is the difference between HashMap and HashTable?
+
+26- Explain the concept of synchronization and thread-safety in the context of collections.
+
+27- What is the purpose of the java.util.concurrent package? Give an example of a concurrent collection class.
+
+28- How does the ConcurrentHashMap achieve thread-safety and high concurrency?
+
+29- What is the difference between CopyOnWriteArrayList and ArrayList in terms of concurrency?
+
+30- Can you explain the concept of Comparator and Comparable interfaces?
+
+31- What is the difference between intermediate and terminal operations on Stream?
+
+32- What does the peek() method do? When should you use it?
+	The peek() method is useful for debugging or monitoring purposes. It allows you to inspect the elements of a stream at various points during the stream pipeline without affecting the pipeline's behavior or the final result. You can use it to perform operations such as printing the elements, logging information, or updating external variables.
+
+33- What do you mean by saying Stream is lazy? 
+	They will not work by just including them on the Stream pipeline. They works on demand
+
+34- What is the difference between the findFirst() and findAny() method? which use when?
+	The findFirst() method will return the first element meeting the criterion i.e. Predicate, while the findAny() method will return any element meeting the criterion, very useful while working with a parallel stream.
+
+35- 
+
+
+
+
+
+
+
+
+
+Synchronized / Thread safe / One thread work
+	- Vector, HashTable, CopyOnWriteArraylist, StringBuffer
+
+Not Synchronized / Not Thread safe / Multiple thread work at a same time
+	- ArrayList, HashMap, StringBuilder
+
+--
+- sting ="abc" vs new String("abc")
+- Memory management- which location of memory object and method, variable stores
+- colaborator design pattern
+- solid design principles in java
+- Behaviour design pattern
+
+- Aggreator design pattern / java 8 completable feature
+
+- Java 11 new changes
+	-var keyword introduced
+	-Epsilon Garbage Collection
+- 
+
+List<String> transformedNumbers = numbers.stream()
+                .map(n -> {
+                    if (n % 2 == 0) {
+                        return Optional.of("Even");
+                    } else {
+                        return Optional.empty();
+                    }
+                })
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+
+movie
+rangitaranga
+Ratsasan
+game over
+
+Spring MVC-
+--------------
+1- Can you explain the core components of Spring MVC and their roles?
+
+2- How does Spring MVC handle requests and responses? Explain the request flow in a Spring MVC application.
+
+3- What are the different ways to configure Spring MVC? Compare XML-based configuration and Java-based configuration.
+
+4- What is the purpose of the DispatcherServlet in Spring MVC?
+
+5- How do you handle form submissions in Spring MVC? Explain the usage of @ModelAttribute and @RequestParam.
+
+6- What are the different ways to handle exceptions in Spring MVC? Explain the usage of @ExceptionHandler and @ControllerAdvice.
+
+7- How can you validate user input in Spring MVC? Describe the usage of validation annotations and error handling.
+
+8- What is the role of the ViewResolver in Spring MVC? Explain how it resolves views based on the view name.
+
+9- What are the advantages of using Spring MVC over traditional Java EE web development?
+
+10- How do you handle file uploads in Spring MVC? Explain the usage of MultipartFile and the configuration required for file uploading.
+
+11- Can you explain the concept of RESTful web services in the context of Spring MVC? How can you build RESTful APIs using Spring MVC?
+
+12- What are interceptors in Spring MVC? Describe their purpose and usage.
+
+13- How do you handle internationalization and localization in Spring MVC?
+
+14- Explain the usage of Spring MVC's form tags and the Spring Expression Language (SpEL) in form handling and data binding.
+
+15- What are the different scopes available for Spring MVC beans? Explain their differences and when to use each scope.
+
+16- What is the difference between RedirectView and ForwardView in Spring MVC?
+
+
+Kubernates-
+------------
+What is Kubernetes, and why is it used?
+
+Explain the key components of Kubernetes architecture.
+
+How does Kubernetes handle container orchestration?
+
+What is a Pod in Kubernetes?
+
+What is the purpose of a Deployment in Kubernetes?
+
+How does Kubernetes ensure high availability of applications?
+
+How does Kubernetes handle scaling applications?
+
+What is a Service in Kubernetes, and what is its role?
+
+Describe the differences between StatefulSets and Deployments in Kubernetes.
+
+How does Kubernetes handle rolling updates and rollbacks?
+
+What is a Kubernetes namespace, and why is it used
+
+How does Kubernetes handle storage for containers?
+
+Explain the concept of a Kubernetes Ingress.
+
+What are Kubernetes ConfigMaps and Secrets?
+
+How does Kubernetes handle networking between containers?
+
+What are some common challenges and limitations of using Kubernetes?
+
+How would you debug a failed deployment in Kubernetes?
+
+What is the difference between a DaemonSet and a Deployment in Kubernetes?
+
+How can you limit resource usage for containers in Kubernetes?
+
+Explain the role of a Kubernetes Operator and when it should be used.
+
+----
+Core Spring Concepts:
+
+1- Explain the core principles of the Spring Framework and how they apply to building microservices.
+	IOC, DI, AOP, Spring Cloud(Discovery, Load Balancing, Circuir Breaker), Containerization and Deployment)
+2- What is dependency injection, and how does Spring facilitate it? Provide examples.
+3- Describe the Spring Bean lifecycle and the use of different annotations like @Component, @Service, @Repository, and @Autowired.
+Spring Boot Basics:
+4 -How do you define a Spring Boot application? Explain the structure of a typical Spring Boot project.
+5- What is the purpose of the @SpringBootApplication annotation?
+
+6- Explain the benefits and challenges of using a microservices architecture.
+
+7- What is service discovery, and why is it important in a microservices ecosystem?
+
+Describe how Netflix Eureka or other service discovery mechanisms can be integrated with Spring Boot microservices.
+How can load balancing be achieved in a microservices setup? Discuss different load balancing strategies.
+Data Management and Persistence:
+16. How does Spring Boot handle database connections and transactions?
+
+Explain the differences between JPA and Hibernate. How do you configure them in a Spring Boot project?
+What is the purpose of the @Transactional annotation, and how does it work?
+Security in Microservices:
+19. How can you secure microservices using Spring Security? Describe the role of authentication and authorization.
+
+Explain the concept of JWT (JSON Web Tokens) and how they can be used for authentication in a microservices environment.
+What is OAuth 2.0, and how does it facilitate authorization and delegation?
+Testing and Continuous Integration:
+22. Discuss the importance of unit testing in microservices development. How does Spring Boot support unit testing?
+
+Explain the concept of integration testing and how it can be carried out in a Spring Boot application.
+Describe the integration of Spring Boot applications with CI/CD pipelines.
+Distributed Tracing and Monitoring:
+25. What is distributed tracing, and why is it important in microservices architectures?
+
+How can you implement distributed tracing in Spring Boot microservices using tools like Zipkin or Jaeger?
+Discuss the role of monitoring and logging in maintaining the health and performance of microservices.
+Containerization and Deployment:
+28. Explain how Docker and Kubernetes can be used to deploy Spring Boot microservices.
+
+What is a Docker image, and how do you create one for a Spring Boot application?
+Describe the concept of Kubernetes pods and services in the context of deploying microservices.
+
+Cercuit breaker
+--------------
+1- @SpringBootApplication combination of below 3 annotations 
+		@SpringBootConfiguration
+		@EnableAutoConfiguration //Autometic configuration the classpath
+		@ComponentScan // serach the @Component class
+2- @RestController combination of below 2 annotations
+		@Controller
+		@ResponseBody
+3- JPA repository and CurdRepository 
+	JPA repository contains the full API of CrudRepository and PagingAndSortingRepository
+	Repository <- CurdRepository  <- PagingAndSortingRepository <- JPARepository
+		
+------
+Topics to be prepared.
+ 
+AWS S3 and lambda and how to use it in spring boot project.
+Java streams, functional interfaces, Comparator , intermediate and terminal operations, parallel streams how it works internally, Garbage collector algorithms and how it works
+Multithreading, executor framework, Future , callable
+CICD how it is built in aws and jenkins
+Spring boot annotations, autoconfiguration in spring boot
+Entity manager and JPARepository usages how to use them and how it works internally
+Saga and circuitbreaker design pattern
+Rest api and implementation and get desired result using groupBy of collectors
+How can we use javascript in html page
+How to change server in spring boot
+Spring boot actuators
+Default and static method on interfaces
+Spring cloud Eureka server, eureka clients, Netflix Hystrix, Load balancer , Api gateway
+Spring dependency injection, SOLID principles, design patterns used, exceptional handling
+ 
+Qustion to ask for interview
+-----------------------------
+Core Java -
+	- Arraly List and linked list difference
+	- String buffer and String Builder
+	
+
+Java 8-
+	- Stream and parallel stream how works internaly
+	- Predicate functional interface and how to call(internal method - test())
+	- intermediate and terminal operations with example
+	- Lose copuling
+	- SOLID design principle
+	- executor framework/Service - future and callable 
+	
+
+Programming-
+	- create a functional interface and call 
+	- get first 10 nos from a list of nos
+	- get the sum of list using reduce method
+	- get no of employees in a department of employee list(using Collectors.groupingBy())
+		- Sort employee by salary
+		- Sort employee by salary and name
+			people2.sort(Comparator.comparing(Person::getAge).thenComparing(Person::getName));
+	- get Character frequency in a Word "SUCCESS"
+	- find the first non-repeated character in it using Stream functions
+	- find third highest no from list
+	- Input - A13BB3C4A8D
+		Output - ABCD
+	-Person object - id, name , age
+		- using stream give only age >45
+		- Create map <age, person object>, find age >45 and privede age:name(34:Sss)
+	- int arra {0,1,0,1,0,1,0,1}
+		dont use sort give - {0,0,0,0,1,1,1,1}
+	
+	
+
+Spring-
+	- DI and IOC
+	- ACID Properties
+	- DB configuration. Multiple DB configuration
+	- batch transaction ensure, if one transaction fail should revert all 
+	- JPA repository and Curd Repository 
+	- Circuir dependency
+
+Spring boot-
+	- Life cycle of bean with fallback
+	- @configuration and @EnableAutoConfiguration
+	- how to read property value
+	- What is the use of @profile
+	- What is Circular Depedency and how to fix
+	- How to implement global exception
+
+Microservices-
+	- Bounded context
+	- How to implement load balancing(Client and Server), which we should use when
+	- When you build your MS where your jar and artifacts stores
+
+Microservices Design Patterns - 
+	- Saga and circuitbreaker design pattern
+	- Certcuit breaker Design pattern
+	- CQRS design pattern
+	- Observer design pattern
+	
+Design pattern
+	- Signleton, Proxy, Builder,
+
+Authorization and Authentication-
+	- Spring Security
+	- JWT
+	- OAuth 1.0
+	- OAuth 2.0
+
+Hibernate- 
+	- Session lifecycle (Note-2)
+	- get and load, save and persist, update and merge
+	- Lazy loading and eger loading(Note-2)
+	- L1 and L2 Cache (Note-2)
+	- Composite key in entity class(Note-2)
+
+GRPC-
+	Types of gRPC
+	- Unary, Server streaming, Client streaming, Bidirectional streaming
+	- Bidirectional
+	- reserved keyword in protobuf file 
+	- how can we set mandetory field 
+		
+Kafka-
+	- What do you understand by the partition in Kafka?
+	- What is the role of offset in Apache Kafka?
+
+Containerization tool
+	- Describe the concept of Kubernetes pods and services in the context of deploying microservices.
+	- What are Kubernetes ConfigMaps and Secrets?
+	- Explain the concept of a Kubernetes Ingress.
+	
+
+------
+-spring reactive vs complatable featue in spring
+- TDD, BDD, DDD
+- Design driven
+- Startegy design pattern
+
+- Structural and non structural DB 
+- MongoDB compas - GUI for mongo DB
+
+grpc-
+ - reserved keyword in protobuf file
+	- reserved tag and variables to not use in protobu file
+ - how can we set mandetory field 
+
+###############
+1- Program - Coding test
+java--
+1- lazy loading in java 8
+2- How can we read a large file
+3- Join and yeild method in java use
+4- Compatiable Future and future
+5- Solid Principle
+6- Blocking Queue and Pripority queue
+
+Spring--
+1- What is stateless in restfull service
+2- why we need seialization and deserilization 
+3- Multiple DB configuration
+4- Looking XML and JSON response both in a service
+5- After receiving request to controller then how to update headers of request
+6- How to create pagination using JPA (extends with PaginationAndSortingRepository)
+
+MS-
+1- How we do microservice Monitoring
+	How we monitor api gateway
+2- JWT and OAuth
+
+1- Kafka consumer read data but not avialable
+2- replicatoin factor 
+3- how to avoide duplicate messages while publishing it
+4- how to avoide reading duplicate messages
+
+
+##############

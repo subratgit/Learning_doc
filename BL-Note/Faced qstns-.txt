@@ -1,0 +1,420 @@
+1- Put and Patch Http methods
+2- In memeory where does Constuctor and Static variable store
+3- JVM structure - class loader, execution engine, GIT compiler, Interceptor,
+4- 12 factor(2)
+5- CORS- Cross origin configuration(2 times)
+6- HLD and LLD - 
+7- Domain Driven architecture
+8- Vertical scaling and horizantal scaling
+	Vertical Scaling - add hardware, cpu, ram
+	Horizontal Scaling - add no of instances
+	When we need which scaling. 
+9- kafka has 5 topics, message distributing to all the topics. How consumer will read sequence messages from all the topics.
+10- Heap dump and thread dump
+	Heap dump - A snapshot of an application's memory at a specific point in time. It shows what is in memory, the values of those objects, and the size of those objects. Heap dumps can help identify memory leaks and high memory usage.
+	Thread dump - Shows what is happening with all the threads in a Java process. Thread dumps can help troubleshoot performance issues, deadlocks, and infinite loops.
+11- // can a abstract class have no abstract method, why can not we create object of abstract class , does abstract class has default method
+	 Abstract class can have constructor but can not create a object becouse by using object we can not call or use abstract method. So, java does not allow ojcet of Abstract class
+12- /// can an interface has wihout no method, // can has only default method
+	Yes
+13- Why HashTable can not have null key
+	HashTable, when putting key value. internally it creates hash of key and check not null value. if Key or value is null it throws NPException
+14- Paas, Saas and Ias
+15- JWT claims
+16- What is @modifying, @Embebale and @Embeded annotaion
+17- Difference between ConcurrentHashMap and CopyOnWriteArrayList
+18- Spring application Global Exception (4 times)
+19- logger configureation in your application  - log4j properties file( grouping and time and formating)
+20- retry api call( use of @retry)
+21- Resolve Circuar dependency in spring boot
+22- Kafka ACK all(GE Health)
+23- Kafka delivery semantics(atleast once and no duplicat)(OneTrust)
+24- kafka idempotent consumer
+24- spring boot reflection
+25- api gateway
+26- Object level locking and class level locking(2)
+27- How autoconfiguration works in spring boot
+28- why we need abstract class if interface can have multiple methods(concret method)
+28- can we create object without using constructor
+29- kafka connect - can we rename kafka configuratio file (2 times)
+30- countdownlatch and cyclicbarrier
+31- Race Condition
+32- rest idempotent methods (3 times)
+	A- HTTP methods that have the same effect on the server, regardless of how many times they are executed. For example, GET, PUT, and DELETE are idempotent methods, because they always return the same resource, update the same resource, or remove the same resource, respectively. On the other hand, POST is not idempotent, because it creates a new resource every time it is called.
+33- bounded context
+34- strangler pattern  in MS
+35- in a circuler linked list how to identify which node was starting node
+36- Quick short and Heap sort - which is fast and how
+37- map and flatmap difference
+38 - dev tool in sping boot
+	-* this is a tool (library in sprng boot) used to auto deploy code in localy once done any change
+39 -how to execute DML and ddl query in your release
+40- what you do if access token expires in authorisation
+	-* When we receive access token, we also receive a refresh token. If Access token expires, application send another request to resource server using refresh token to get new access token
+41- how to secure your service
+42- How to authorize file download and file upload application
+43- How to create immutable object(Immutable object contains object like Employee/Hashmap)
+44- Redis or EhCache - how Radis works, is it run in differnt server. How it store the cachec for multiple request from multiple client
+45- How you do sping boot versioning
+46- @Transient in entity class
+  - which prevent int DB operation. Only for respnse purpose
+47- MS-A wants to call a service from MS-B. How will call
+	- MS-A call using rest template - It will case trafice issue
+	- In MS-A we can add MS-B as dependency
+48- Where logs store - log repository
+49- Jenkins pipeline Architecture
+50- What are the rest client you used.
+51- microservices design principles
+52- Your application api is having POST and Delete mthod. You want to restrict the delete operation for some temporary time. Without code change and redeploy application.
+53- Your get api using Front end application. How can you restrict your api data from caching at UI end.
+54- Lets say you spring boot ms has isolation level read-committed and in DB isolation level is Read-Uncommitted. which one will work for your api?
+55- What is return type of map.put()?
+56- Employee e1 = new Employee();
+	HashSet s = new Hashset()
+	s.add(e1);
+	s.add(e1);
+	s.size(); ? - 1 or 2? and why?
+	
+	- if Employee class overrede hashcode method return 5 always, how it will behave?
+57- What is demon thread? can we create our own thread to demon thread. what is the use of domain thread and where it uesd?
+58- how to use rate limiting to a api
+
+
+
+
+
+
+Capco interview---
+-----------------------
+what is projection in hibernate
+what are the cascades
+HLD Design - what is CAPIROM and RPO
+how the real use of proxy design pattern - behabhiour and structural design pattern
+MS - A -> B -> C where we should use Circuit design patterns
+	- Ans - we have to declare all microservices(A and B)
+how to configure 2 DB and how to identify the transaction to which DB
+Your MS(A) call to MS-B, MS-C and MS-D. How to identify which is your own MS and which is external MS(here MS-D)
+what are the grant types in Authorizisation, how it validate the token  and where it generate(if you say it is in gateway, how it secure your MS api and external apis)
+How you do performance test-
+	When you do perofrmance test in locally it was working fine but when you deploy in production, after one month application gives perormance issue
+	- Such cases how will you trace which service is giving performance issue and what would you do to resolve the performance issue
+
+postConstruct and EventListener (Answ)
+
+How can we add external properties files in MS other than application.properties(Answer available)
+
+path param, query partm and request param (ans)
+------------
+Can we create own marker interface. Who identify marker interface and do the specific work
+
+----------
+Emids- 2nd
+- what is metasapce in java 8
+- How will manage transaction Atomicity - if app calling to service A and then calling to service B and calling to service C. Transaction should be manage atomicity, how will you manage- either all the services or none
+- How will be active the Oauth provided token
+- @Profile and @Condition annotation in spring
+- JPA repository interface has a method annotated as @Query. Method is returning List of Objects.
+	How will you manage to get DTO list from that repository query method, so that you no need to convert Object list to DTO list.
+	Sould not change in repository query mthod
+
+- Lets say you have build a MS S1. MS has 3 consumer(Client)(C1, C2, C3). It is in production. One point the no of consumer is spiked in C1. The requests coming to C2 and C3 is ignored by the MS S1. This is resulting starvation, the requests coming to C2 and C3. How to handle this type of design - how to address this particular soultion
+- Design a micro service which will take input country and currency which will return the current gold price. Initial data will load the start of the day.
+	Teke care of below points in design -
+	- Only access to registered user
+		- Cost effective
+		- Scale
+
+	
+
+
+
+
+
+
+AWS- 
+----------
+- Different categories/types of EC2 instances
+- Different types of S3 storage classes
+- what is the use of AWS lambda in your application
+- EC2 EBS and S3 uses
+- How many files we can create in s3(file no)
+- How to create provission in AWS lambda 
+	If you are writting direct code and uploading that jar to S3 - this will be work in local how it will be work in prod
+
+Storage class in s3, Policy, security.
+how to apply s3 policy
+s3 event notification , versioning, data protection 
+S3 handle large size data
+
+EC2 - migrate one region to different region
+role of ec2 placement group
+EBS - Elastic block store
+how secure and automet pipeline for ec2
+cost effective
+
+Hands-on experience with AWS services like SQS, S3, ECS, MSK, CloudWatch, SNS, Secret Managers etc.
+
+
+
+
+Security-
+----------
+- @EnableOauth2(value lab)
+- what is securitycontxt filter  (value lab)
+- can we write custom authentication filter (value lab)
+- how to prevent csrf attack - how to save CSRF your api
+- How do you decode auth token
+- how do you parse JWT token
+- What is the main information we look form JWT token.
+- How to secure a service which is expose to customer 
+- Your oauth2 server generatd a token for 30 mins expire time but the token has been hacked. Hacker can access the service using your token how to prevent this issue(If you regenerate token it might be same with previous or new token can will not expire old token)
+-
+
+
+
+Devops --
+---------
+1- Kubernates - replica set and services 
+2- How docker image can get dynamic values
+3- How we containerize microservices
+4- What if all the nodes goes down(all replica/instances down)
+5- How do you ensure the container image is compatible with AWS and Openshift
+	- If I created a impage for windows machine, will it work in linux machine
+6- How can we create image using maven command
+
+Docker command and tags
+health related commands - from, run, entrypoint(IMP)  
+Basic commands of docket
+what is docker and its use
+if docker image has any issue how to trouble shoot it. how to check trouble should log
+how to check health
+
+Kubernates
+if you hitting a url how it reaching in pod
+ingeess - pod
+cluster ip
+
+selector and mess level in kubernates tag- 
+pod is working but has issue in pod. pod got deleted how it will agin connect to service
+
+deffrent resources in kubernates - kind of object - pod , configmap, secret
+liveness prob and rediness prob
+
+- Communication between namespace pods - A namespace has one pod and B namespace has one pod. how to communicate these pods? is it possible?
+
+
+
+
+In Kubernates, differents instances are created in idfferent pods. Each pod will have different IP address but same port no. IP address range is difined in configuration file.
+
+
+
+Design based-
+--------------
+- One file contains 1 milion recodes, you wat to process in and update in DB - design the efficent way
+- ONe application is there you need to implement by looking thread , synchronous and perfromance(multi thread)
+- How will manage transaction Atomicity - if app calling to service A and then calling to service B and calling to service C. Transaction should be manage atomicity, how will you manage- either all the services or none
+- Lets say you have build a MS S1. MS has 3 consumer(Client)(C1, C2, C3). It is in production. One point the no of consumer is spiked in C1. The requests coming to C2 and C3 is ignored by the MS S1. This is resulting starvation, the requests coming to C2 and C3. How to handle this type of design - how to address this particular soultion
+- Design a micro service which will take input country and currency which will return the current gold price. Initial data will load the start of the day.
+	Teke care of below points in design -
+	- Only access to registered user
+		- Cost effective
+		- Scale
+
+- What is CQRS design pattern ? - lets say one MS has get api, Post and Put api. can we say this is a CQRS design pattern?
+
+
+
+
+DB-
+-------
+1- Create customer and cards with issue date schema and make 1-n relation
+
+Customer
+Id, Name, address, gender, cardtypeId(Id), issueDate
+CardsType
+Id, Name, type 
+
+Write query to get list of customer those are holding card for more than 5 years, it is possible that single customer has multiple cards.
+
+Senarios -
+ - customer name can be same but they actualy two customer
+ - 
+
+select distinct c.name c.id ,c.name , c.address, d.type as cardtype form customer c, CardsType where c.cardtyeId = d.id and c.issueDate < sysdf
+
+2- SQL schema to create 1-n and n-n relation DB-
+3- Given an employee table with id, name and managerId - Select name and manager name.
+Example:
+ID     NAME 	      MANAGERID
+1     Hari      	
+2     ManiRathnam      1
+select name,manager Name
+Expected result:
+Hari, null
+ManiRathnam, Hari
+
+Ans I gave-
+select e1.name,e2.name from employee e1, employee e2 where e1.id = e2.managerId
+
+4- explain different types of keys in query 
+5- Databese use wich data structure for indexing
+6- 2NF and 3NF
+
+
+
+
+
+
+
+
+
+
+
+
+
+Program- 
+Introduction
+1- Array {1,2,3,5,6,5}
+	Sum = 15
+	find the array index nos which will give sum 15
+	
+2- What would be output for below code
+
+public class InterfaceDefaultMethodOverried implements Poet, Story {
+
+	public static void main(String[] args) {
+		InterfaceDefaultMethodOverried obj = new InterfaceDefaultMethodOverried();
+		obj.write(); // what is the output
+	}
+}
+
+interface Poet {
+	default void write() {
+		System.out.println("Writting Poet.");
+	}
+}
+
+interface Story {
+	default void write() {
+		System.out.println("Writting Story.");
+	}
+}
+
+
+
+
+
+
+
+## Map vs FlatMap
+	- map - transform each element to differnt value
+	- FlatMap - flatten a stream of streams into a single stream.
+		- concatenates all those streams into a single stream.
+		EX- List<String> sentences = Arrays.asList("hello world", "java stream");
+	List<String> words = sentences.stream()
+                              .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                              .collect(Collectors.toList());
+
+	System.out.println(words); // Output: [hello, world, java, stream]
+
+## bounded context-
+	- A Bounded context should be an independent domain.
+	- a bounded context is a logical boundary within which a particular domain model applies. It represents a specific responsibility or domain area in your application
+	-* Bounded Context is a domain driven module. One MS id for a complete domain. Like User Management, Customer management, Order management.
+
+## CORS- Cross origin configuration
+	- CORS is a frature implemented by browser to prevent web pages from making requests to a different domain than the one that served the web page
+	- Spring boot configuration
+		- in Configuration class	
+			- @Configuration
+			public class WebConfig implements WebMvcConfigurer {
+
+				@Override
+				public void addCorsMappings(CorsRegistry registry) {
+					registry.addMapping("/**")
+							.allowedOrigins("http://www.example.com")
+							.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+							.allowedHeaders("*")
+							.allowCredentials(true)
+							.maxAge(3600);
+				}
+			}
+	
+		- in Controller class add cors annotaion
+			@CrossOrigin(origins = "http://www.example.com")
+	
+## @Component vs @Bean (3 times asked)
+ - @Component - Used to automatically detect and register beans in the Spring application context. It defined on class.
+	- @Component Preferable for component scanning and automatic wiring.
+	- This also define in class level
+ - @Bean - Declare on single bean in @Configuration class. 
+	- @Bean basicall used in Configuration class. 
+	
+ - When should use @Bean and @Component?
+	- Let's imagine that you want to wire components from 3rd-party libraries (you don't have the source code so you can't annotate its classes with @Component), so automatic configuration is not possible. In this case we should use only @Bean
+	
+	
+ 
+## How can we add external properties files in MS other than application.properties
+	- We can specify the path in properties file
+		spring.config.additional-location=file:/path/to/your/config/
+	- we can also specify in annotation
+	@Configuration
+	@PropertySource("classpath:custom.properties")
+	public class CustomConfig {
+	  @Value("${custom.property}")
+	  private String customProperty;
+
+	  // getters and setters
+	}
+	
+## path param, query param and request param
+- Path Param 
+	 - @GetMapping("/users/{userId}/orders/{orderId}")
+		public Order getOrder(@PathVariable String userId, @PathVariable String orderId) {
+			// Implementation here
+		}
+		
+	- Query Parma-
+	- Basicall it is used for get method - to get, search and sort etc
+	- to get the request data used @RequestParam annotation
+	EX-
+	- /search?query=java&limit=10
+	@GetMapping("/products")
+	public List<Product> getProducts(@RequestParam String category, @RequestParam String sort) {
+		// Implementation here
+	}
+	
+	- Request param-
+	- It basically used for POST, PUT, UPDATE method as Request body
+	Ex- 
+	@PostMapping("/users")
+    public User createUser(@RequestBody User user) {
+        // Implementation logic here
+        return userService.createUser(user);
+    }
+
+## PostConstruct and EventListener method execute at time of spring boot start up
+	@PostConstruct
+	public void postConstruct() {
+		System.out.println("@PostConstruct method called");
+	}
+	
+	@EventListener
+	public void handleContextRefresh(ContextRefreshedEvent event) {
+		System.out.println("@EventListener method called");
+	}
+	
+	- Other interfaces which called before spring boot application start up
+	- CommandLineRunner, InitializingBean, ApplicationRunner 
+
+## How you do sping boot versioning - 
+	Ans - Versioning requered, when same api will called by different clients(mobile app, desktop, ..) 
+	Ex- app/v1 - Mobile, app/v2  - desktop
+	
+	@RequestMapping(value = {"app/v1","app/v2"})  // it will take both requests
+	//you can write get put and post methods
+	// if you want particular request use request.getUri()
+	
+	

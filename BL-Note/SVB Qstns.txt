@@ -1,0 +1,110 @@
+
+SVB --
+
+SVB Round 1 Questions : 
+Spring boot 3.x - Features
+Spring boot - Annotations you used till now
+How to create pagination using JPA (extends with PaginationAndSortingRepository)
+how to update column using JPA - (Native SQL)
+what is idempotent and if it is post how to avoid idempotent
+After receiving request to controller then how to update headers of request
+how many ways we can call two microservcies -> (Http Client, Rest Template, Web Client, Feign client, @HTTPExchange -> spring 3.x version)
+ 
+Kafka -> 
+how to avoide duplicate messages while publishing it
+how to avoide reading duplicate messages
+kafka architecture
+how to integrate kafka with spring boot -> annotations and configration
+How to test kafka applicatoin (testContainers)
+ 
+Core java Code 1 ->
+			input 		output
+square56([3, 1, 4]) → [19, 11]     
+Impelement it using Java 8
+square it and add no 10 to it and if last digit is 5 or 6 then skip the no
+ 
+ 
+Core java Code 2 ->  (Use recursive method)
+[16,18,19]  -> if nearest is near by 20 then return 60
+[12,14,11]  -> if nearest is near by 10 then return 30
+[4,5,7] -> -> if less than 10 then return 10
+ 
+ 
+SVB Round 2 -> 
+What is rate Limitter 
+how to secure rest API
+how many ways we can secure rest API
+how to ensure that JWT token is expired
+how overriding is working with Interfaces
+How to resolved below exception:
+ 
+Nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: 
+No qualifying bean of type [com.payment] is defined: expected single matching bean but found 2: abc,xyz
+ 
+what is api contract?
+how to resolved cycling dependency in sping boot
+difference between setter injuction vs constructor injection
+when to use bean annotation vs component annotation
+ 
+Wite post api with versioning for payment -> 
+need to create whole structor like -> controller, service,  repository, entity,
+
+
+-- Manish
+method overeloading and overiding
+super keyword use
+What is static
+equal and == uses
+Different memory in Java and its uses
+Spring boot framework initial setup process
+how to configure DB connection details in spring boot
+how to configure Spring security.
+
+diff between equals and ===
+how you handle not handled exception
+How you will create spring boot project and what all anotation you will use.
+How you handle kafka message which failed.
+How you will manage vulnerability 
+How you will review code?
+
+################################################################
+SVB Round 1 Questions : 
+## Spring boot 3.x - Features
+	- Support at least Java 17
+	- GraalVM native image support
+	- Support for Jakarta EE 10( Jakarta EE previously known as JEE)
+	- Web Flux enhancements
+	- Micrometer metrics and tracing updates
+	
+##- Spring boot - Annotations you used till now
+	- SpringBootApplication(@Configuration + @EnableAutoConfiguration + @ComponentScan)
+	- RestController
+	- RequestMapping ( @GetMapping, @PostMapping, @PutMapping, @DeleteMapping)
+	- @Autowired
+	- @Component, @Service, @Repository
+	- @Configuration
+	
+## How to create pagination using JPA (extends with PaginationAndSortingRepository)
+	- Entiy class - Class Item
+	- Repository interface
+		public interface ItemRepository extends PagingAndSortingRepository<Item, Long> {
+			// No need to define methods for pagination and sorting explicitly
+		}
+	- Service class for pagination
+		import org.springframework.data.domain.Page;
+		import org.springframework.data.domain.PageRequest;
+		public class ItemService {
+
+			@Autowired
+			private ItemRepository itemRepository;
+
+			public Page<Item> getAllItems(int pageNo, int pageSize) {
+				// Create PageRequest for pagination
+				PageRequest pageable = PageRequest.of(pageNo, pageSize);
+
+				// Fetch paginated items from repository
+				return itemRepository.findAll(pageable);
+			}
+		}
+
+

@@ -1,0 +1,199 @@
+Microservices.
+1. How are you communicating with multiple microservices.
+2. How To Implement Feign Client In Spring Boot Microservices.
+3. Explain circuit breaker concept and how to implement it.
+4. What is Load Balancing and how it works.
+
+
+Springboot.
+1. What is Dependency Injection or IOC.
+Dependency Injection is a fundamental aspect of the Spring framework, 
+through which the Spring container “injects” objects into other objects or “dependencies”.
+Simply put, this allows for loose coupling of components and moves the responsibility 
+of managing components onto the container.
+
+2. What are different types of dependency injections.
+Constructor Based Dependency Injection, 
+Field or Property-Based Dependency Injection (@Autowired in a variable)  
+Setter Based Dependency Injection
+3. Difference between constructor and setter injection.
+
+Sr. No.	Key	Constructor based Injection	Setter based Injection
+1
+Constructor - It doesn’t allow to create circular dependency
+Setter - It doesn’t check the circular dependency
+2
+Ordering
+Constructor-based DI fixes the order in which the dependencies need to be injected.
+Setter-based DI helps us to inject the dependency only when it is required, as opposed to requiring it at construction time.
+3
+MutilThread Environment  
+Constructor - Combining with final fields, constructor injection gives extra safety in multithreaded environment
+Setter - No extra benefit in setter injection
+4
+Constructor - Spring Code generation Library
+Spring code generation library doesn’t support constructor injection 
+so it will not be able to create proxy. It will force you to use no-argument constructor.  
+Setter - Spring framework level code uses setter injection
+5
+Use Case
+Constructor - It should be used for mandatory dependencies
+Setter - It should be used for optional dependencies.
+
+
+4. how can you resolve cyclic dependency in spring.
+
+- Refactoring
+
+One way to fix circular dependency is to refactor your code to remove the circular 
+reference. This can be done by extracting the shared functionality into a separate class
+ or interface, which can be injected into both classes that previously had the circular
+reference.
+
+- Setter Injection
+Another way to fix circular dependency is to use setter injection instead of constructor 
+injection. With setter injection, Spring Boot will first create the object
+and then set the required dependencies using the setter method.
+- Lazy Initialization
+
+Another way to fix circular dependency is to use lazy initialization.
+With lazy initialization, Spring Boot will create the object only when it is first used,
+instead of creating it immediately at application startup. 
+This can help break the circular reference
+ by delaying the creation of one or more of the objects until they are actually needed.
+ 
+The most preferred technique for fixing circular dependency in Spring Boot is 
+Method 2: Interface-based programming. This technique allows you to break the circular 
+dependency by introducing an interface between the two classes that depend on each other.
+This method is preferred because it allows for better separation of concerns, promotes 
+loose coupling between components, and makes the code more testable.
+However, the choice of technique ultimately depends on the specific use case and 
+requirements of your application. In some cases, using lazy initialization or refactoring
+may be a better fit for your particular situation.
+
+5. Explain about spring security.
+
+
+6. What is difference between authentication and authorization.
+Authentication -In the authentication process, the identity of users are checked for providing the access to the system.
+Authorization -While in authorization process, a the person’s or user’s authorities are checked for accessing the resources.
+
+Authentication - It is done before the authorization process
+Authorization- While this process is done after the authentication process.
+
+Authentication- It needs usually the user’s login details.
+Authorization- While it needs the user’s privilege or security levels.
+
+Authentication- Authentication determines whether the person is user or not.
+Authorization- While it determines What permission does the user have?
+
+Authentication- Generally, transmit information through an ID Token.
+Authorization- Generally, transmit information through an Access Token
+
+Authentication-
+Popular Authentication Techniques- PasswordBased Authentication,2FA / MFA,SSO,SocialAuthentication
+Authorization-
+Popular Authorization Techniques- Role Based Access Control, Json Web Token Authorization,SAML Authorization,OAuth 2.0 Authorization,OpenID Authorization
+
+Authentication-The authentication credentials can be changed in part as and when required by the user
+Authorization-The authorization permissions cannot be changed by user as these are granted by the owner of the system and only he/she has the access to change it.
+
+Authentication- The user authentication is visible at user end.
+Authorization-The user authorization is not visible at the user end.
+
+Authentication-The user authentication is identified with username, password, face recognition, retina scan, fingerprints, etc. 
+Authorization-The user authorization is carried out through the access rights to resources by using roles that have been pre-defined.
+
+Authentication-Example: Employees in a company are required to authenticate through the network before accessing their company email.
+Authorization-Example: After an employee successfully authenticates, the system determines what information the employees are allowed to access. 
+
+
+
+7. What is JWT token and how to implement.
+JSON Web Tokens (JWT) have become a popular method for securing modern web applications. 
+JWTs allow you to transmit information securely between parties as a compact, self-contained,
+and digitally signed JSON object. 
+
+To Implement JWT you need to add jjwt library and spring security in your dependency pom file .
+For security configuration you have to extend class with WebSecurityConfigurerAdapter which will have overriden configure method where
+you configure settings including authentication and authorization rules.Also antMatcher which will exclue login and token endpoints from authentication .
+ @Secured("ROLE_USER") // Role-based authorization
+ 
+ Implement a custom filter that intercepts incoming requests, validates the JWT, 
+ and sets up the authentication context if the token is valid.
+ You can use Spring Security’s OncePerRequestFilter for this purpose.
+ 
+
+
+8. Explain about Radis cache
+
+.
+9. What is @bean and @configuration.
+The @Bean annotation is used to indicate that a method instantiates, configures, and initializes a new object to be managed by the Spring IoC container.
+Annotating a class with @Configuration indicates that its primary purpose is as a source of bean definitions.
+@Configuration classes let inter-bean dependencies be defined by calling other @Bean methods in the same class. The simplest possible @Configuration class reads as follows:
+
+10.How autowiring works in Spring.
+Autowiring feature of spring framework enables you to inject the object dependency implicitly.
+It internally uses setter or constructor injection.
+Autowiring can't be used to inject primitive and string values. It works with reference only.
+
+11.Explain about @SpringBootApplication.
+@ SpringBootApplication is combination of several annotations like
+- @ EnableAutoConfiguration - using this annotation enables the autoconfiguration feature
+ of SpringBoot. AutoConfiguration attempts to guess and configure the beans which you may 
+ need, based on the classpath. By looking the package dependencies you have specified, 
+ SpringBoot will automatically create beans.
+
+- @ SpringBootConfiguration -
+This is a class level annotation used as primary configuration.This annotation is similar
+to @ Configuration. This generally inherits from the SpringBootApplication annotation.
+ Most commonly used in the class with main method of the application. 
+
+- @ ComponentScan- You annotate the classes to make them into Spring beans. The responsibility of ComponentScan annotation is to scan these classes annotated with below annotations:
+    @ Component
+    Stereotype annotations like @ Controller, @ Service, @ Repository
+    @ Configuration
+
+12.How Componentscan works internally in spring boot.
+@ComponentScan is an interface and it is part of the package org.springframework.context.annotation. 
+It will enable component scanning in the Spring application. 
+Component scanning enables auto-detection of beans by Spring Container.
+
+Java classes decorated with stereotypes such as @Configuration, @Component, @Service,
+ @Controller, and @Repository are auto-detected by Spring. We can annotate component scan with or without arguments.
+
+@ComponentScan WITHOUT arguments tells Spring to scan the current package and all of its sub-packages. For example :
+
+import org.springframework.context.annotation.ComponentScan;
+@ComponentScan
+public class MovieApplication {
+}
+@ComponentScan WITH arguments tells Spring to scan the package mentioned with an attribute basePackages. For example:
+
+import org.springframework.context.annotation.ComponentScan;
+@ComponentScan(basePackages = "com.bsmlabs.microservices")
+public class MovieApplication {
+}
+
+The component scan interface looks like
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Documented
+@Repeatable(ComponentScans.class)
+public @interface ComponentScan {
+}
+Since ComponentScan’s Retention Policy is Runtime, it will be executed during Runtime only. And it can appear in class-level or interface or enum declaration level. Hence its @Target is ElementType with Type i.e., @Target(ElementType.TYPE).
+
+Hibernate:
+1. what is Native query in hibernate.
+
+2. Difference between first level and second level cache in Hibernate.
+
+Java 8:
+1. Explain java 8 features.
+2. How to find unique employee list based on first name and last name using java 8 stream api.
+
+
+

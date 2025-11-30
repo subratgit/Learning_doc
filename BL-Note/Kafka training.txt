@@ -1,0 +1,216 @@
+Kafka(Event Driven Communication, Async Communication, Distributed Communication)
+------
+Message broker - Rabbitmq, SQS(AWS), kafka, kinesis, Google pubsub
+
+Broker- which process mesage/data
+Producer- send data to broker
+Consumer- receive data from broker
+Cluster - set of computer- each computer has one broker
+
+data - Structure and Non structure data
+Structure data - related to each other (Schema)
+
+
+Produce produces message to topic and it partitioned into multiple parts 
+each partition has an offset
+each partition send to broker(kafka server)
+
+Consumer group - group of consumer
+
+Kafka need zookeepr to manage cluster
+Zookeeper - consistency file system
+
+Commands
+Zookeeper start-
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+Broker start -
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+C:\apps\kafka_2.13-3.6.1\bin\windows
+
+Create topic-
+.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 2 --topic trainingTpoic
+
+Producer-
+.\bin\windows\kafka-console-producer.bat --topic myTestTopic --bootstrap-server localhost:9092
+
+Conseumer-
+.\bin\windows\kafka-console-consumer.bat --topic myTestTopic --from-beginning --bootstrap-server localhost:9092
+
+topic list-
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+describe topic - 
+ .\bin\windows\kafka-topics.bat --describe --topic myTestTopic --bootstrap-server localhost:9092
+ 
+kafka.tools.GetOffsetShell
+
+-------------
+Kafka Advantages-
+a. High-throughput
+b. Low Latency
+c. Fault-Tolerant
+d. Durability
+e. Scalability
+
+Disadvantages
+a. No Complete Set of Monitoring Tools
+b. Not support wildcard topic selection
+
+## Kafka is a powerful messaging system that offers high scalability and fault tolerance. However, it also has its own set of disadvantages, including complexity, operational overhead, message ordering, message size limitations, and dependency on Zookeeper.
+
+Cluster - Cluster contains n no of nodes - cluster > nodes
+Topic - Seperate line of communication - Using topic, producer and consumer communication happens
+	- A topic can be linked with many producer and many consumer
+	- producer add messages in key, value pair. Key is optional
+	- topics can be partitioned
+	- A partition can be replicated and stores different node of cluster
+- Messages published to a topic remain after they are consumed
+- Kafka envirment in multiple nodes which works as a cluster
+- each node in the cluster is a server or broker
+- cordination between Node/Broker is managed by service like Zookeeper. which is in kafka package
+	- multiple node -> cluster
+	- Node = Broker
+- A Kafka server, a Kafka broker and a Kafka node all refer to the same concept and are synonyms 
+- Broker store partitions and their replicas
+- Broker process requests to read from and write to partitioned
+- Topic like a Table in DB and partition like rows 
+- Consumer can subscribe multiple topics
+- Zookeeper controll the brokers inside cluster
+
+- A Kafka cluster consists of one or more servers (Kafka brokers).
+	Each Broker can have one or more Topics. Kafka topics are divided into a number of partitions,
+	Different partitions of a topic can be stored in multiple machines. But, a single partition has to be stored entirely in one machine.
+	
+	Cluster -> Brokers -> Topics -> Partitions (all are one to many) 
+- A topic has multiple partitions, each partition store multiple messages and each messags has assigned to a offset no. Order of offset is guaranted within partition
+
+- Leader and followers
+	In Kafa one broker is leader and some brokers will followersers for that broker. Basically the leader broker manages follower brokers
+- Fault tollerence
+	when leader broker goes down one of the follower broker will became leader
+
+##
+Consumer groups-
+- Consumer group is set of consumers
+- Each consumer with a group reads from exclusive partitions
+	EX-
+	- Partitions P0, P1, P2
+	- Consumer Group0 has consumer C0 and C1. If C0 read data from P0 and P1, C1 will read P2.
+		Note - C1 can not read data from P0 and P1. Because its already C0 is reading
+	- Consumer Group1 has consumer C0, C1 and C2. Read data C0 - P0, C1 - P1, C2 - p2
+	- Consumer Group2 has consumer C0. Read data C0 - P0, C0 - P1, C0 - p2
+- You can not have more consumers than partitions, otherwise some will be inactive
+
+##
+What is Zookeeper?
+- Zookeeper is a distributed coordination service that is used to manage and maintain the Kafka cluster. It is responsible for storing metadata, managing configuration data, and keeping track of the health of the brokers. 
+- In other words, Zookeeper keeps track of which broker is responsible for which topic and partition, and ensures that the brokers are working together as a cluste
+
+##
+Use of Zookeeper?
+- Zookeeper manage brokers
+- Zookeeper helps to performaing leader election for partitions
+- Zookeeper sends notification to kafka in case of changes(new broker, broker dies, new topic, delete topic...)
+- Kafka 3.x works without zookeepr - using kafka raft instead
+- Kafka 4.x will not have zookeepr - boker will manage all
+
+##
+Broker??
+- Broker is a server
+	- Receiving data
+	- Storing data
+	- Serving data
+
+##
+poll(long timeout), commitSync(), commitSync(java.util.Map offsets)
+
+The poll method retrieves messages, could be only 1, could be 20, for your example lets say 3 messages were returned [0,1,2]. You now have those three messages. Now it's up you to determine how to process them. You could process them 0 => 1 => 2, 1 => 0 => 2, 2 => 0 => 1, it just depends. However you process them, after processing you'll want to commit which tells the Kafka server you're done with those messages.
+
+Using the commitSync() commits everything returned on last poll, in this case it would commit offsets [0,1,2].
+
+On the other hand, if you choose to use commitSync(java.util.Map offsets), you can manually specify which offsets to commit. If you're processing them in order, you can process offset 0 then commit it, process offset 1 then commit it, finally process offset 2 and commit.
+
+
+- Kafka has hig throughput but storage is less
+
+## By using --alter we can alter the topic configuration
+	--describe command we can get the details about the kafka topics
+	 .\bin\windows\kafka-topics.bat --describe --topic myTestTopic --bootstrap-server localhost:9092
+
+## Kafka retry consumer and error handling
+	1- producer produce message to kafka topic(main-topic)
+	2- Consumer(main-consumer) listen messages from main-topic
+	3- If any issue/exception happens in main-consumer, it dont try to listen agin from main-topic
+	4- Main-consumer push the message to retry-topic
+	5- retry-consumer listen from retry-topic
+	6- If any issue/exception happens in retry-consumer, it try to listen agin(as per configured retry no) from retry-topic
+	7- After retry, still not able to listen. it store the message in DB
+	8- Another application read that message form DB and send aging to retry-topic
+	Note - In this approach main issue is we can not maintain the order of the messages
+	
+##  Dead Letter Queue (DLQ) is used to store messages that cannot be correctly processed due to various reasons, for example, intermittent system failures, invalid message schema, or corrupted content. 
+	These messages can be later removed from the DLQ for analysis or reprocessing.
+
+
+## KEY in message-
+	Messages contains same key gives guarante to store in same partition.
+	Ex- Topics has 3 parttions(p0,p1,p2). if message does not contains key, it stores in all the partitions by using round robin algorithm, if message contains KEY, it stores in a single partition
+	
+
+
+**
+
+Bulk read/commit message
+Kafaka streaming
+grpc stream vs kafka stream
+how to configure kafka to read sequencially
+Fanout concept
+
+
+
+##
+kafka Producer and consumer annontationa in spring
+public class KafkaProducer {
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    public void sendMessage(String message){
+        LOGGER.info(String.format("Message sent -> %s", message));
+        kafkaTemplate.send(AppConstants.TOPIC_NAME, message);
+    }
+}
+
+public class KafKaConsumer {
+
+    @KafkaListener(topics = AppConstants.TOPIC_NAME,
+                    groupId = AppConstants.GROUP_ID)
+    public void consume(String message){
+        LOGGER.info(String.format("Message received -> %s", message));
+    }
+}
+
+properties file-
+# Producer properties
+spring.kafka.producer.bootstrap-servers=127.0.0.1:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.group-id=console-consumer-97824
+topic.name.producer=testTopic
+
+# Common Kafka Properties
+auto.create.topics.enable=true
+
+
+
+	
+Nginx---
+- Nginx used to solve C10K proble - 10K request send concurrently. to handle such load balancing issue
+- Nginx is a webserver that used as a proxy server, load balancer, mail proxy and Http cache
+- Nginx is event-dirven, asynchronous and non blocking server
+- Basically it works as load balancing
+- Nginx works as firewall - all the request sends to server through nginx
+- reverse proxy - all the request from nginx to server
+
+nginx vs envoy

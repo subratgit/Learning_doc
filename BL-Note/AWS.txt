@@ -1,0 +1,81 @@
+Subrat- AWS
+
+EC2 - Elastic compute cloud
+ECS- Elastic Container Service - deploy and manage containerize application
+ECR- Elastic Cloud Registry - store docker image
+EKS- Elastic Kubernate Service
+VPC- Virtual Private cloud
+
+ELB - Elastic Load Balancing
+RDS - Amazon Relational Database Service
+
+S3 - Simple storage service
+
+CloudFont - Amazon CloudFront is a content delivery network. 
+	When someone look for a file form your application, couldfont find the nearest location and serve form there.
+
+Cloud formation - is a service that enables you to define and provision AWS infrastructure as code using template.[more..]
+
+S3 Glacier - Store data in archiving format. Low cost storage 
+
+Elastic Beanstalk - orchestration service offered by AWS for deploying applications which orchestrate various services including EC2, S3, SNS, CloudWatch, ELB
+
+API gateway - 
+
+Paswords keep in security manager
+
+AWS services not region specific- 
+IAM, Cloudfont, Route 53
+
+AWS auto scaling - it autometically adjusts  the instance based on the demand.Configure, if traffic reach 50% create new instance and if goes below 20% remove instances
+
+
+
+
+Container registry role - enable our instance to pull image from ECR container 
+
+Create EKS service
+Create cluster
+create node group
+Enable private/ public subnet
+ssh configure
+
+EKS -> Resources -we can see replicas, Pods, services, config map and secrets
+Kubernate used deployment.yml file from our git repo
+
+
+Spring boot deploy in EC2
+-------------------------
+create spring boot application
+build and create jar file
+jar file upload to S3 bucket
+mark the file as public
+
+To deploy applications  in EC2 
+use putty
+while createing EC2 instance you must have downloaded key pair file
+by using putty key generator convert to windows relted file
+
+open putty - use EC2 instance host name and user name
+Use generated key pair file in putty ssh auth
+
+Commands
+to move root directory
+sudo -i
+to install java
+yum install java-1.8.0-openjdk
+to change the java
+to show list of java
+Alternatives --config java ( list the total java version0
+it will ask to what no you want to change.
+
+Download jar from s3 instance to EC2
+Wget <jar path url of s3>
+
+to strat java spring boot jar
+Java -jar <jar file name>
+
+once the server started you can got and get public ip address and add port to url and add the context path
+
+Spring boot deploy in EC2 - END
+//////////////////

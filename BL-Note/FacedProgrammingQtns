@@ -1,0 +1,82 @@
+## 1- Output of below program-
+class SuperClass {
+    SuperClass() {
+        foo();
+    }
+
+    public void foo() {
+        System.out.println("In SuperClass.foo()");
+    }
+}
+
+class SubClass extends SuperClass {
+    private String member;
+
+    public SubClass() {
+        member = "HI";
+    }
+
+    public void foo() {
+        System.out.println("In SubClass.foo(): " + member.toLowerCase());
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        SuperClass reference = new SubClass();
+        reference.foo();
+    }
+}
+
+Ans - This program throws a NullPointerException.
+
+2- find max trans amount
+	class Transaction{
+	type, amout and currency
+	}
+	
+3- average salary of emp on each dept
+
+4- Input  String s = "$abc&d";
+   out put- $dcb&a - Special charactor will remain in same index
+
+5- write program for prime no 12= 2,2,3
+6- input - int a[][] = {{ 1, 2,	3,	4},
+						{5,	6,	7,	8},
+						{9,	10,	11,	12},
+						{13, 14, 15, 16}};
+						
+	OutPut - 16,15,12,8,11,14,13,10,7,4,3,6,9,5,2,1(read dignoallY)
+7- input array => [20, 300,320, 1, 11, 99, 80, 8]
+output =>        [1, 11, 20, 300, 8, 80, 99]
+	
+8- Given a list of stock prices for a company, find the maximum amount of money you can make
+with one trade. A trade is a buy and sell.
+ 
+For example:
+[9,3,2, 1 ,5,7,2, 8 ,3,4] -> Max diff is 7, from 1 and 8.
+
+Notice that the difference between 9 and 1 is higher, but it doesn't count because 1 comes after 9.0
+
+9- int a [] = {2,4,5,6,11,-1,7};
+find the two elements whose sum is 5
+
+10- output
+public static void main(String[] args) {
+    TreeSet t = new TreeSet();
+    t.add(new String("test"));
+    t.add(new Object());
+    System.out.println(t);
+}
+
+11- output
+public static void main(String[] args) {
+    try(Employee e = new Employee())
+    {
+        System.out.println("hello");
+    }
+    finally
+    {
+        System.out.println(" world");
+    }
+}

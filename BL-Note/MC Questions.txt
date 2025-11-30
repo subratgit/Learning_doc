@@ -1,0 +1,162 @@
+1- Why MicroService required
+2- MS Saga design pattern
+	How to handel in case of event failure
+3- BFF and Aggregator patterns diff
+4- AOP in spring and where it is uesed in spring framework
+5- Response Entity Vs Map. Why should use Response Entity
+6- Caching- where it used
+7- JPA repository
+	Native query use and why need
+8- Multiple DB - how to configure
+9- Distrubute Transaction  need
+10- Spring Batch
+11- MicroService Design Principle
+	Low lattency
+12- Secure Rest API - How can we secure our api
+13- Logging Configuration
+15- Hibernate - saveAll() method - how it works internally
+16- Spring Security
+
+
+Spring security - Authentication
+Oauth - Authorization
+
+
+mastercard ces project
+
+1- slidingWindowSize in Circuit Breaker
+
+## Apache Kafka and Event-Driven Architecture
+- Kafka Broker
+- Handling Events
+- Understanding Pub/Sub (Publish-Subscribe) Concepts
+- kafka clustering
+- kafka streams
+- design patterns like CQRS
+
+
+## File Processing
+- SFTP (Secure File Transfer Protocol)
+- FTP (File Transfer Protocol)
+- Encryption and Decryption
+- Sending Large Files Over the Network
+- Good understanding about file system and processing them
+
+## Authentication and Authorization
+- API Gateway
+- Authentication and Authorization Mechanisms
+- Supporting Multiple Authentication Methods Through API Gateway
+- Implementing API Gateway in Spring
+- Rate Limiting
+
+##  profiling
+- Dynatrace ,jProfiler, prof,visualVm,AppDynamics
+- Application Monitoring
+- Tools for Application Monitoring
+
+## Network
+- Latency
+- TCP Protocol
+- SSL/TLS communication
+
+## Load Balancing
+- Different Load Balancing Techniques
+
+
+## API Gateway
+- NGINX vs Other API Gateways
+- JVM Heap Allocation
+- SSL Handshake Process
+- How TCP Protocol Works
+- Rate limiting and thottling
+
+
+## JVM
+- JVM Tuning
+- Garbage Collection (GC) and zGC
+- Java PermGen (Permanent Generation)
+- JVM memory management
+
+## GoLang and Rust
+- Overview of GoLang
+- Overview of Rust
+- Java vs GoLang vs Rust
+- Why we should use goLang over Java
+
+
+## HTTP
+- Understanding What Happens When HTTP Frames Drop
+- Ensuring Frame Integrity
+-Encryption tech
+-DDD vs TDD VS BDD
+- Good understanding of system design 
+
+
+
+Technical jargons---
+-----------------
+
+Elastic search- 
+	Apache lucene - search engine
+Elastic search is a nosql DB
+
+ELK - ElasticSearch, Logstash, Kibana
+Logstash - Stream component push data to Elasticserch
+Kibana - Visualiation tool. 
+
+
+
+
+#################
+
+SVB --
+
+SVB Round 1 Questions : 
+Spring boot 3.x - Features
+Spring boot - Annotations you used till now
+How to create pagination using JPA (extends with PaginationAndSortingRepository)
+how to update column using JPA - (Native SQL)
+what is idempotent and if it is post how to avoid idempotent
+After receiving request to controller then how to update headers of request
+how many ways we can call two microservcies -> (Http Client, Rest Template, Web Client, Feign client, @HTTPExchange -> spring 3.x version)
+ 
+Kafka -> 
+how to avoide duplicate messages while publishing it
+how to avoide reading duplicate messages
+kafka architecture
+how to integrate kafka with spring boot -> annotations and configration
+How to test kafka applicatoin (testContainers)
+ 
+Core java Code 1 ->
+			input 		output
+square56([3, 1, 4]) → [19, 11]     
+Impelement it using Java 8
+square it and add no 10 to it and if last digit is 5 or 6 then skip the no
+ 
+ 
+Core java Code 2 ->  (Use recursive method)
+[16,18,19]  -> if nearest is near by 20 then return 60
+[12,14,11]  -> if nearest is near by 10 then return 30
+[4,5,7] -> -> if less than 10 then return 10
+ 
+ 
+SVB Round 2 -> 
+What is rate Limitter 
+how to secure rest API
+how many ways we can secure rest API
+how to ensure that JWT token is expired
+how overriding is working with Interfaces
+How to resolved below exception:
+ 
+Nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: 
+No qualifying bean of type [com.payment] is defined: expected single matching bean but found 2: abc,xyz
+ 
+what is api contract?
+how to resolved cycling dependency in sping boot
+difference between setter injuction vs constructor injection
+when to use bean annotation vs component annotation
+ 
+Wite post api with versioning for payment -> 
+need to create whole structor like -> controller, service,  repository, entity,
+
+

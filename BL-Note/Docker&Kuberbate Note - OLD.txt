@@ -1,0 +1,200 @@
+Docker-
+--------
+Image - Image is package or template, It is used to create one or more container
+Docker image run in any docker installed environment
+Docker image - * doc of developer and devops
+
+
+Commands-
+docker ps - list all container
+docker ps -a - check running container
+docker stop <container_id> - stop container
+docker rm <container_id> - remove container permanently
+docker images - show all the images in the host
+docker rmi <image_name> - remove the image
+docker build -t test-app .
+docker login
+docker run timer
+docker run -d timer
+docker run attach timer
+
+
+------------------------
+Kubernets/K8(google)-
+-----------
+Kubernetes is a container orchestration tool.
+other Orchastration tools - Docker swarm, Mesos
+
+Node(Minions) - Node is a worker machine, where container will be launched by Kubernetes
+Cluster - set of nodes group togather
+Master - another node - Kubernetes installed on it. Master watches nodes and is responsible to actual orchestration
+
+Kubernetes components - API Server, etcd, Kublet service, Container Runtime, Controller, Scheduler,
+
+API Server - interact with user interface(computer, mobile)
+etcd- kubernetes to store all data used to manage the cluster. It store in key value pair
+Scheduler - Distribute works accross multiple nodes
+Controller - The controllers are the brain behind orchestration. They are responsible for noticing
+and responding when nodes, containers or endpoints goes down.
+container runtime - The container runtime is the underlying software that is used to run containers. In our case it happens to be Docker.
+Kubelet - Kubelet is the agent that runs on each node in the cluster. The agent is
+responsible for making sure that the containers are running on the nodes as expected
+
+kubeadm- multi-node kubernetes cluster in local environment
+
+kubectl - is command line tool used to deploy and manage application on Kubernete cluster.
+command - kubectl get nodes
+		- kubectl cluster-info
+		- kubectl run nginx --image=nginx
+		- kubectl describe pod nginx
+		
+Master Node and Worker Node - 
+	Master Node - it manage worker node. 
+		- Api Server
+		- Scheduler
+		- Controll Manger
+		- Etcd
+		
+Minikube - insteller to run kubernetes,
+
+POD - Pod is a single unit of application.
+
+Kubernete Cluster -> node -> POD -> Container
+
+To scale up we need to add new node and scale down remove pod
+POD has one-to-one relationship with container. But in helper container can be present in one pod with one container
+
+Health Probes - 
+	Liveness - Liveness probe checks the health of the container and if it fails the probe, Kubernetes terminates and recreates the pod.
+	Readiness probes - determine if a pod is ready to receive traffic. By using Kubernet	es ensures that only healthy pods receive traffic, 
+		and any unhealthy pods are automatically restarted or replaced
+
+
+minikube environment -- ??
+
+Yaml- 
+-------
+pod-defination.yaml:-
+------
+apiVersion: v1
+Kind: Pod
+metadata:
+	name: myapp-pod
+	labels:
+		app: myapp
+		type: front-end
+spec:
+	containers:
+		-name: nginx
+		 image: nginx
+		 
+Kubernete controller -- 
+Replication Controller-
+It helps us to run multiple instances in a single pod. It ensure that atleast a single instance run at a time.
+Replication Controller -  creates new pod if request comes more. It can also use other node to add more pod if demand comes. It expands in multiple controller.
+
+Replica set is replaced Replication Controller
+Selector is the major difference of Replica set and Replication Controller
+
+
+Ingress
+Outgress-
+
+
+Oprnshift ---
+--------------
+All-in-one - only dev environment
+
+
+Minishift -  single environment contains Kubernetes, etcd and openshift
+
+Openshift setup
+1- Package manager(RPM) - traditional
+2- Containerization 
+
+Openshift Management Tool - 
+1- WebConsole
+2- CLI
+3- Rest API
+
+
+User 3 types-
+1- Regular User - Interacting with openshift to deploy application
+2- System User - interacting with infrastructure, such as cluster.. prefix system
+3- System Account - communicating service within application. prefix system:serviceaccount
+
+Namespace- namespace provides a grouping of resources- Openshift do it autometically 
+
+Commands-
+oc get projects
+od get users
+
+Openshift Build and deployment Process - 
+Create Build -> Download Source -> Build Image -> Push to Repository -> Deploy 
+
+
+
+		 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Cigna ----
+----------
+CNP - Cloud native pipeline
+
+
+Helmm / Helmchat - multiple yaml file
+			Provides template. keeps all common files
+			to make common we can have place holder(for pod no)
+			
+Cedrus team
+QUAY - docker hub
+Argocd- Pick the yaml file from git and execute
+New relic - Monitoring
+Harmes - Internal tool of Cigna for self service. Create namespace and automate system
+Namespace- ?
+Assignment - ? 
+egess - outgoing trafic
+ingress - incoming trafic
+
+oc set triggers bc/pipeline --from-github
+webhook-
+https://api.sandbox-m2.ll9k.p1.openshiftapps.com:6443/apis/build.openshift.io/v1/namespaces/sahuopen-dev/buildconfigs/example/webhooks/ApjcKlfUVk-pa8_COOtP/github
+
+Eureka Discovery - for service registy
+Feign - declarative web service client
+Zuul - intelegent routing system
+Hystrix - cercuit breaker
+Ribbon- Load distribution framework
+
+
+
+Source to Image - STI
+Lift and shift
+code 
+
+
+Docker Hub Id -
+Id- sahusubrat
+Pwd- Subrat@12
+Email- subratsahumca@gmail.com
+COPY . /var/www/java 
+
+RedHat Account-
+UN- sahusubrat
+Email- subrat.sahu@brillio.com
+sahusubrat111@gmail.com
+Pwd - Subrat@1

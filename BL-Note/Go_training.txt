@@ -1,0 +1,322 @@
+Go- Language
+- It is on premises support
+- Python - thread was global interprter lock 
+- Go complies to machine code  - better performance
+- easy to read and write
+- used for block chang and cryptocurrency
+- Versatility, performance, simplicity
+
+
+Variable
+	define var keyword
+	var age int
+	age = 30
+Constants 
+	const keyword 
+	can not modify
+	const pi = 3.14
+int: integer type int, int8, int 16
+float  - flot16
+byte- uint8
+rune - alias fo int 32
+
+var a, b int = 10,5
+
+No Polymerphism and inheritance
+
+function syntax
+func <function_name>(arg int) int8/*return type*/ {
+
+}
+
+//diclare variable
+var a := 10
+
+
+Control Structure--
+if condition--
+	if age >= 18 {
+		fmt.Println("--")
+	}
+
+Loop - for, while(NO KEY word as while), infinite loop
+
+Array , slices, Maps
+Array - fixed size collection of elements of same type
+Ex - var arrayname [size] datatype
+	len(arrayName)
+
+Slices
+Slice is dynamic
+flexible length
+Ex - sliceName []datatype
+sliceName := make([]datatype, length, capacity)
+for i, range(sliceName)
+
+Maps
+Map is unordered collection key-value pair
+var mapName map[keyType] value
+
+
+1- Golang History and advantages
+2- datatypes
+3- variable declarations
+4- condition statements - if, else if, switch
+5- Method declarations, multiple method argument and multiple retun types
+6- loop- for, while 
+7- DS- Array, Slice
+
+day2--
+Map
+Error handling
+exclipit error handling
+panic and recovery for exception
+
+panic - critical error
+recover - to regain control of panicking goroutine
+deffer - gressfully recover error - same as finally
+
+pointer
+pointer store memory adress of another variable
+declare pointer is *oprator
+
+deferencing pointer - Accessing the value stored in memory location
+Ex-
+var x int =10
+var ptr *int = &x // ptr points the memory address of x
+fmt.Proint(*ptr) // prints the value of x through ptr
+
+Memory Allocation
+It managed in runtime
+fratures - garbage collection, reclaim memory no longer used
+
+Heap - objects are stored
+
+Escape Analysis
+determine whether variables can allocated on the stack or they promoted to heap
+
+pass by value and pass by refernce
+passing pointer or address is pass by refernce
+
+memeory safety
+
+dangling pointers - pointer which are not used
+- not pointing to any valid objects
+
+Struct- composite datatype
+	- define by type
+	Ex-
+	type Person struct {
+		name string
+	}
+Create instance of stack
+p := Person{name:"Alice"}
+
+Interfaces
+	- set of method signatures
+	- used keyword type
+	
+	Ex- 
+	type Shape interface {
+	 area() float64
+	 }
+	 
+	 - declare methods in interface
+	 Ex- 
+	 func (c Circle) area() float64 {
+	 return 3.14 * c.radius
+	 }
+	 
+	 - Circle is struct - radius is defined here
+
+Method
+Methods are function associated with a particular type
+- associated to additional receiver praram before function name
+
+
+day-3
+
+1- Golang History and advantages
+2- datatypes
+3- variable declarations
+4- condition statements - if, else if, switch
+5- Method declarations, multiple method argument and multiple retun types
+6- loop- for, while 
+7- DS- Array, Slice
+8- Map
+9- struct, interface
+10- pointer
+11- file handeling
+12- Exception Handling - predefine and custom exception
+
+Goroutine
+- Goroutines are lightweight thread
+Ex-
+go func(){
+}
+
+Channels -
+communication mechanism used to synchtonize data between goroutine
+facilitate safe communication
+Ex-
+ch :=make(chan int)
+go func(){
+	ch <-42 // send datat to channel
+}()
+
+value := <-ch //receive data from channel
+
+Concurrency Patterns
+fan-out / fan-in
+fan-out - distributes workload 
+fan-in - result collected 
+	waits for all the subtask to complete the task and collect
+
+Context-
+provides mechanism for handeling deadlines, Cancellations timeouts in concurrent operations
+
+Mutes - mutual exclusion
+-lock()
+-unlocl()
+
+RWMutex - extesion of Mutex
+- multiple read and only one write
+- Lock()  and Rlock()
+
+Points-
+
+Goroutine- for multiple thread
+Channel- message pass from different threads
+Concurrency
+Context
+Select statement- to select one thread
+Mutex, RWMutex, lock(), unLock(), defer()
+WaitGroup, wait add(), wait done()
+Fan out and Fan in
+
+Day4-
+Testing--
+- file should be _test.go
+- fuction start with Test
+Ex- 
+func testAdd(t *testing.T){
+	result := Add(2,3)
+	if resule !=5 {
+		t.Errorf("Add(2,3)= %d; want 5", result)
+		
+	}
+	}
+t.Error* - report error and continue execution
+t.Fatal* - return the error and stop execution
+
+-- to run test case command in terminal
+go test -v
+go test -v <test file>
+
+
+Table-Driven test---
+Test difine multiple tests in slice of structure
+
+
+Subtest - group related tests togather
+Benchmark test - it support for performance test
+	Benchmark*
+Coverage - support test coverage
+	go test -cover
+	go test -coverprofile=coveragefilename.out
+	
+Mocking and dependecy injection ---
+
+Gin framework -
+go get -u github.com/gin-gonic/gin
+
+go get github.com/pkg/profile
+go mod tidy
+
+Sumary of golang test 
+1- File and method naming convension
+2- Test method signature
+3- different commands to run different type of test cases
+4- Table-Driven test - basicaly its like bulk test
+4- Subtest - it is group of related test cases
+5- Benchmark test - it is for system resource and performance test
+6- Coverage test - it is for to check code coverage test. check the percetage of line covered by test cases
+7- Mocking - Mock objects
+8- Stated on gin framework
+
+Gin----
+Gin gonic-
+Git frame written in go lang itself
+- this is light weight and faster
+- Build on top of FASTHTTP package
+	- High performer http server
+
+Routing- Http request and handler fuction
+
+Git support middle wire support
+Middle wire - Logging, Authentication
+
+Gin provides error handeling
+
+[1:04 PM] Lakesh Sai Kumar Keerthi
+4U.[$7Q$l1AMuN
+
+day6---
+What is a purpose of GIN framework ?
+Gin framework is web framework for Go lang. It is developed using go lang. It provides high performance and error handeling features.
+
+Explain quickly about router services-
+Router server is part of gin framework, it provides differnt types of routing like GET, POST, PUT, Delete
+
+postgre sql driver-
+go get github.com/lib/pq
+
+go mod init telecom-customer-app
+go get github.com/gin-gonic/gin
+go get github.com/jinzhu/gorm
+go get github.com/jinzhu/gorm/dialects/postgres
+go get github.com/gin-contrib/multitemplate
+
+go get -u github.com/gin-gonic/gin
+go get -u github.com/jinzhu/gorm
+go get -u github.com/jinzhu/gorm/dialects/postgres
+go get -u github.com/gin-contrib/multitemplate
+
+
+go run .\main.go
+
+Project Structure
+
+telecom-capstone/
+│
+├── main.go
+├── handlers/
+│   ├── customer_handler.go
+│   └── service_handler.go
+├── models/
+│   ├── customer.go
+│   └── service.go
+├── db/
+│   └── database.go
+├── migrations/
+│   ├── 001_create_customers_table.sql
+│   └── 002_create_services_table.sql
+├── utils/
+│   └── response.go
+├── config/
+│   └── config.go
+├── templates/
+│   ├── index.html
+│   ├── customer/
+│   │   ├── create.html
+│   │   ├── edit.html
+│   │   ├── show.html
+│   │   └── list.html
+│   └── service/
+│       ├── create.html
+│       ├── edit.html
+│       ├── show.html
+│       └── list.html
+└── static/
+    └── css/
+        └── bootstrap.min.css

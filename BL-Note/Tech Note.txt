@@ -1,0 +1,186 @@
+1- TDD, BDD and DDD
+	TDD - Test Driven Develpment - starts with writting failure test cases followed by developer strats code to pass those test
+		TDD emphasizes code level test 
+	BDD - Behavior Driven Develpment - It writes in plain langague. Tool like Cucumber translate these behavior to executable test. 
+		BDD stresses the validation of behavior.
+
+
+------ Spring Boot/Microservices ------
+
+## - Spring Cloud -Spring Cloud provides the tools to help them interact in a cloud environment
+	Spring Cloud Config - Centralizes external configurations across multiple microservices.
+	Eureka: Provides a mechanism for service discovery so that services can find and communicate with each other.
+	Zuul: Acts as an API gateway, providing dynamic routing, monitoring, resiliency, and more.
+	Hystrix: Helps in latency and fault tolerance, ensuring that one failing service does not take down an entire application
+		This uses for Circuit Breaker Design Pattern. Alternate is Resilience4j.
+	Resilience4j - this is widely used Circuit breaker DP
+	Ribbon - Ribbon is a client-side load balancer that gives you a lot of control over the behavior of HTTP and TCP clients
+	Actuator - Monitoring service for service, we can view health, beans
+
+## API ratelimiting-
+API rate limiting is a technique used by web services to control the rate at which clients (such as applications or users) can make requests to the API within a specified time period. The purpose of rate limiting is to prevent abuse, ensure fair usage, and protect the server from being overwhelmed by a high volume of requests.
+
+## Latency - How much time it takes to provide the response
+## Throughput - how much data can be sent in a given period of time(second).
+## OPS- Operation per second
+## Discord - Social communiction channel like whatsapp- we can send text messages, video, call
+
+## Spring cloud components
+- Spring cloud Config - Centralized configuration management.
+  Components - 
+	Config Server - A cetral place to manage external properties for configuration
+	Config Client - fetch configuration properties from config serve
+
+- Spring Cloud Netflix -
+	Components - 
+		Eureka: Service discovery.
+		Ribbon: Client-side load balancing.
+		Hystrix: Circuit breaker for fault tolerance.
+		Zuul: Edge server for intelligent routing.
+
+- Spring Cloud Gateway - Purpose: API gateway.
+	Components:
+		Routes: Defines how requests should be routed.
+		Filters: Allows for pre-processing and post-processing of requests.
+	
+- Spring Cloud OpenFeign - Declarative REST client
+	Components - 
+		Feign Client: Annotated interface that defines the HTTP requests.
+		
+- Spring Cloud Sleuth - Distributed tracing.
+	Components:
+		Tracer: API for creating and manipulating spans.
+		Span: Represents a single unit of work.
+		
+## Feign Client- 
+	- when we are performing load balancing in spring cloud and when we are intergratin with spring cloud Eureka registry to invoke ecternal server. This case we should not use rest template.
+	- Feign client internally balance load
+	- For Feign client no need much code only one interface, so no need of more test cases
+	
+
+
+
+
+## Load balancing - client side LB and server side LB
+- Client Side LB - Spring cloud provides Ribbon for client side LB. User sends request to Client side LB and CSLB send request to eureka.
+User - > CSLB -> Eureka -> MS
+
+* Feign client is also CSLB
+
+- Server side LB-
+Server-Side Load Balancer Provided by Spring Cloud: Spring Cloud Gateway, Netflix Zuul
+User - > Eureka -> SSLB -> MS 
+
+*f5 load balancer
+
+## Circular dependency. How to resolve
+
+Circular dependencies occur when two or more components depend on each other, creating a loop
+Ex- A -> B (A depends on B)
+	B -> A ( B depends on A)
+@Component
+class A {
+ B b; }
+@Component
+Class B {
+A a; }
+// here component scan is eager loading, so it will give Circular or cyclic dependency issue
+
+Solution -
+	1- Add below property in properties file
+	spring.main.allow-circular-references = true
+	2- add lazy loading for any dependency
+	@Component
+	class A {
+	 @Autowired
+	 B b; 
+	 A(@Lazy B b) { this.b = b;}
+	}
+	3- Use setter injection. Setter injection is bydefault lazy
+	@Component
+	class A {
+	 B b; 
+	 @Autowired
+	 public void setB(B b) { this.b = b; }
+	}
+
+## Service registry - 
+	Client side SR
+	Server side SR
+	Client -> Load Balancer -> Server instance
+	Application instances are deployed in different servers. First instaces register in service registry. Load Balancer connect with service registry and the details about the instance(Ip and Port). Once get the details about the instaces it store in Load balancer cache. If new instaces get added or deleted, it will first register in SR and Load balancer will get the updated details from SR.
+	
+	Ex- Eureka Server
+	
+## microservice monitoring tools
+By using logging mechanism we monitor different microservice instances
+Tools - Grafana, Dynatrace, NewRelic, Zipkin
+	
+## inpiut for date is string in JSON. We have to convert date format in enitity class
+	Ex-
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-mm-yyyy")
+	Date dob;
+	
+## Hibernate spring transaction save() and saveAll() method implementation and performance
+	Library implementation, saveAll() iterates over each element and uses the save() method in each iteration.
+	save() and saveAll() ethods are annotated with @Transactional.
+	Furthermore, the default transaction propagation type is REQUIRED, which means that, if not provided, a new transaction is created each time the methods are called.
+	each time we call the save() method, a new transaction is created, whereas when we call saveAll(), only one transaction is created, and it’s reused later by save().
+	This way saveAll() improves performance.
+	
+	
+---------- Security ---------
+oswap principle - vernabilibily - sql 
+
+cosscripting request forgeriri
+broken access contorl
+ssl handsake
+
+
+## cross scripting - 
+From UI it should not allow any script.
+Ex - Name field - it should allow only text. If we send some script like <head><body>.. tags, it should not allow. this can be cause vulnerable. 
+
+## CORS - Cross-origin resource sharing - 
+Cross-origin resource sharing (CORS) is an extension of the same-origin policy. You need it for authorized resource sharing with external third parties. For example, you need CORS when you want to pull data from external APIs that are public or authorized.
+
+Simplifying- Client(UI app) call to server(localhost:3000) and from server it call to another service(localhost:5000). This case we get CORS error.
+To solve this we need to add CORS library in client(UI app) and add the url(localhost:5000)
+
+
+## OWASP- 
+The Open Worldwide Application Security Project (OWASP) is a nonprofit foundation that works to improve the security of software. 
+
+Broken access controls-
+Broken access controls allow attackers to bypass authorization and perform tasks as though they were privileged users such as administrators.
+Ex- acchieve by change url, by change url params
+
+-	Cross site request forgery - CSRF
+	EX- Alice is a user of an online banking application.
+	The banking application uses cookies for session management and does not implement CSRF protection.
+	
+	Mallory sends Alice an email with a link to a malicious website that Mallory has created.
+	The email entices Alice to click on the link, which leads to Mallory's malicious website.
+	The malicious website contains an HTML form that automatically submits a POST request to the online banking application's transfer money endpoint.
+	
+Injection Attack - 
+OWASP Injection is a type of security vulnerability that occurs when untrusted data is sent to an interpreter as part of a command or query.
+
+	SQL Injection-
+	This occurs when an attacker injects SQL code into a query that is sent to a database. The database interprets the injected SQL code as part of the original query, which can lead to unauthorized access to data, data manipulation, and other malicious activities.
+
+	Command Injection-
+	LDAP Injection - 
+	XPath Injection
+	XSS (Cross-Site Scripting) Injection
+
+--------------------------
+
+Questions?? -
+- where signlton can break 
+	- Multithreading
+	- Serialization and deserialization
+	- cloning
+	- Reflection
+	- Double check
+-Does Rest api do serialization and deserialization for employee object transfer

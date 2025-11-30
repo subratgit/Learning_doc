@@ -1,0 +1,39 @@
+Kubernartes
+--------------
+1- Node contains multiple Pod. Pod ocntains container(ex Docker) - 
+2- Each Pod has a unique IP
+3- Pod can be destroy and reassign new pod
+4- Pod connected with service. Service has fix IP and wont destroy
+5- By using Ingress external world can access POD ip
+6- ConfigMap - External configuration of your application 
+7- Secret- used to store secret data(username, pwd) in encryopted format
+8- Volume - It is act as a backup data - basically it is physical hard drive or local machine. Volume connected with POD
+9- Service also work as a load balancer
+10- Replica set - is a duplicate copy of POD
+11- We can not replicate DB pod
+12- Sateful set - basicaly used for DB POD - 
+13- Every node has one containter(Docker)
+14- Kublet start the POD with a container inside - (it stores inside node)
+15- Kubernartes cluster consists of multiple nodes. Each node has on container(Docker) and kublet
+16- Kube Proxy  -  installed in every node - its helps to identify resources form same node where POD recieve requst
+17- Master node/process - it manages the services
+18- Master Node Component - API Server, Scheduler, Controller, etcd, Kublet service, Container Runtime,
+19- Minikube - insteller to run kubernetes- Create a virtual box with a Node (node contains master node and worker node). This required for local system
+20- Kubectl - commad line t 
+
+Namespace-
+	- Kubernate organise the resourece  in namespace
+Ingress - When we request from browse using host name it communicate with ingress service and ingress service communicate with keubernte service
+
+
+
+
+
+Cluster -> node -> pod
+
+
+?fF?
+Master, Slave, Worker node
+In Openshift how to check which one is Master node and worker node
+
+ConfigMap

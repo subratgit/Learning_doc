@@ -1,0 +1,109 @@
+Time Complexity-
+--------------
+
+Big O Notation -
+----------------
+1- O(1) - Constant Time (Best complexity)
+2- O(log n) - Logarthimic time (Good)
+3- O(n) - leaner time (Fair)
+4- O(n log n) - linearithmic time (Bad) 
+5- O(n^2) - Quadratic time (Worst)
+6- O(2 pow n) - Exponetial time (Worst)
+7- O(n!) - Factorial time (Worst)
+
+Time complexity from samll to high--
+O(1) < O(log n) < O(n) < O(nlog n) < O(n^2) < O(n!)
+
+Selection Sort - Best- Omega(n^2), Average- Beta(n^2), Worst- O(n^2)
+Bubble Sort - Best- Omega(n), Average- Beta(n^2), Worst- O(n^2)
+Insertion Sort - Best- Omega(n), Average- Beta(n^2), Worst- O(n^2)
+
+Heap Sort - Best- Omega(nlog n), Average- Beta(nlog n), Worst- O(nlog n)
+Quick Sort - Best- Omega(nlog n), Average- Beta(nlog n), Worst- O(n^2)
+Merge Sort - Best- Omega(nlog n), Average- Beta(nlog n), Worst- O(nlog n)
+
+Bucket Sort - Best- Omega(n+k), Average- Beta(n+k), Worst- O(n^2)
+Radix Sort - Best- Omega(nk), Average- Beta(nk), Worst- O(nk)
+
+
+Quick sort algorithm has the best time complexity of all the sorting algorithms. The best, average, and worst cases of Quicksort's temporal complexity are O(N log N), O(N log N), and O(N log N), respectively
+
+
+Search -
+------------
+
+- Linear Search - Best - O(1), Average- O(n), Worst- O(n)
+- Binary Search - Best - O(1), Average- O(log n), Worst- O(log n)
+- Jump Search - - Best - O(1), Average- O(sqrt n), Worst- O(sqrt n)
+- Interpolation Search - - Best - O(1), Average- O(log log n), Worst- O(n)
+- Exponetial Search - - Best - O(1), Average- O(log n), Worst- O(log n)
+- Fibonacci Search - Best - O(1), Average- O(log n), Worst- O(log n)
+- Ternary Search- Best - O(1), Average- O(log3 n), Worst- O(log3 n)
+
+
+Sorted Array: Use Binary Search for optimal performance.
+Unsorted Array: Use Linear Search or, if space permits and the search frequency is high, consider using Hashing.
+
+---------
+Calculation - 
+1- 
+class GFG {
+    public static void main(String[] args)
+    {
+        System.out.print("Hello World");
+    }
+}
+
+- Time complexity is constant. So complexity is O(1)
+
+2-
+public static void main(String[] args)
+    {
+        int i, n = 8;
+        for (i = 1; i <= n; i++) {
+            System.out.printf("Hello World !!!\n");
+        }
+    }
+- Code “Hello World !!!” is printed only n times
+- The time complexity is linear: O(n)
+
+3- 
+public static void main(String[] args)
+    {
+        int i, n = 8;
+        for (i = 1; i <= n; i=i*2) {
+            System.out.printf("Hello World !!!\n");
+        }
+    }
+
+- This is in betewwn O(1) and O(n)
+Time Complexity: O(log2(n))
+Auxiliary Space: O(1)
+
+## 4- Function contains 3 loops(multiple) for all the elements
+	- Independent loops
+		Ex- for(--){ --- }
+		   for(--){ --- }
+		   for(--){ --- }
+		
+		Time complexity - O(n) + O(n) + O(n) = O(3n) = O(n)
+	
+	- Nested Loop -
+	Ex-  for(--){
+		 for(--){ --- }
+		  for(--){ --- }
+		  }
+	Time complexity - O(n) * O(n) * O(n) = O(n^3)
+	
+	
+	- Independent Loops: O(n)
+	- Nested Loops: O(n^3)
+	
+## 5- O(log n) and O(n logn n)
+	- O(log n) - this is for binary search. When we divide the array in two or three parts
+	- O(n Log n)  -  is more expensive than O(n). This is when we call a function recursively. Example is Merge sort and quick sort
+
+
+		 
+
+	

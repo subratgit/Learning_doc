@@ -1,0 +1,158 @@
+SQL keys-
+1- Distinct
+	SELECT DISTINCT column1, column2 FROM table_name;
+	- This query returns unique combinations of the specified columns.
+	- Can not specify some column for unique and some non unique, It returns entire Row Uniqueness.
+
+2- Concat two or more columns in select statement
+	- select concat(empno, '-', ename) as no_name, hiredate from emp;
+	- select empno||'-'|| ename as no_name, hiredate from emp;
+
+3- Date comparision
+	SELECT ename, hiredate
+	FROM emp
+	WHERE hiredate < CURRENT_DATE - INTERVAL '5' YEAR;
+	
+4- Non Equi Join SQL
+	- join should not use quals oprator(=)
+	EX- Select a.ename,	b.deptno,b.dname from emp a,dept b where a.deptno <> b.deptno;
+	
+5- SQL query to change the column type
+ALTER TABLE [tbl_name] MODIFY COLUMN [col_name_1] [DATA_TYPE], 
+    MODIFY [col_name_2] [data_type], 
+    MODIFY [col_name_3] [data_type]
+	
+	ALTER TABLE table_name ADD column_name datatype;
+	
+6- What is the difference between IN and EXISTS
+	- EXISTS operator can only be used with subqueries, whereas we can use the IN operator on subqueries and values both.
+	- SELECT column_name(s) FROM table_name 
+	WHERE EXISTS (SELECT column_name(s) FROM table_name  WHERE condition);
+
+7- Group BY
+	- GROUP BY clause is placed after the WHERE clause.
+	- GROUP BY clause is placed before the ORDER BY clause
+	- Group BY clause is placed before the Having clause
+
+8- Having Clause
+	- HAVING Clause is implemented in column operation.
+	- Having clause is generally used after GROUP BY.   
+
+##
+7- How to find the nth highest salary in SQL?
+	- postgre - select sal from emp order by sal desc limit 1 offset 4;
+		- Limit 1 - return one record 
+		-  offset 4- skip top 4 records
+	
+	- SQL- SELECT MIN(salary) AS nth_highest_salary
+			FROM ( SELECT DISTINCT salary, FROM employees ORDER BY salary DESC LIMIT n ) AS temp;
+	
+	- Using sub query (2nd highest)
+	SELECT MAX(salary)FROM emp WHERE salary < (SELECT MAX(salary) FROM emp);
+			
+##  2nd Highest salary
+select max(sal) from emp where sal<(select max(sal) from emp);
+
+select * from emp where sal < (select max(sal) from emp) order by sal desc fetch first 1 row only;
+select * from (select * from emp  where sal<( select max(sal) from emp) order by sal desc ) where ROWNUM = 1;
+
+SELECT max(salary) AS SecondHighestSalary FROM Employee WHERE Salary <> (SELECT max(salary) FROM Employee)
+
+
+##
+8- How to fetch alternate records from a table?
+	- Oracle SQL -  SELECT *
+		FROM (SELECT your_table.*, ROW_NUMBER() OVER (ORDER BY id) AS row_num FROM your_table)
+		WHERE row_num % 2 = 1; 
+	
+	- postgres - SELECT * FROM ( SELECT *, ROW_NUMBER() OVER (ORDER BY id) AS row_num
+		FROM your_table ) AS numbered_records WHERE row_num % 2 = 1;  
+
+
+
+##
+9- How will you avoid getting duplicate entries in a query?
+
+	
+??
+- count no of employees in each dept
+SELECT e.deptno, d.dname, count(*) FROM emp e, dept d where e.deptno= d.deptno GROUP BY e.deptno, d.dname;
+- //add salary 100 to only CS dept others should remain same - show all the emps
+
+
+
+
+
+1- Create customer and cards with issue date schema and make 1-n relation
+
+Customer
+Id, Name, address, gender, cardtypeId(Id), issueDate
+CardsType
+Id, Name, type 
+
+Write query to get list of customer those are holding card for more than 5 years, it is possible that single customer has multiple cards.
+
+Senarios -
+ - customer name can be same but they actualy two customer
+ - 
+
+select distinct c.name c.id ,c.name , c.address, d.type as cardtype form customer c, CardsType where c.cardtyeId = d.id and c.issueDate < sysdf
+
+
+
+Joins
+1- INNER JOIN/JOIN
+2- LEFT (OUTER) JOIN
+3- RIGHT (OUTER) JOIN
+4- FULL (OUTER) JOIN
+
+* 5- SELF JOIN // same as inner join but joins with same table
+6- Cross Join 
+
+1-INNER JOIN/JOIN
+------------------
+A has rows - id -1, 2, 3, 4, 5
+B has rows - id -3, 3, 5
+
+select a.id form A join B on A.id = B.id;
+Result - ( it will compare each recods of A with B) - 3,3,5
+
+select a.id form A join B on A.id != B.id;
+Result - ( it will compare each recods of A with B) - 1,1,1,2,2,2,3(5),4,4,4,5(3),5(3),5
+
+4- FULL OUTER JOIN
+------------------
+select * from teacher FULL OUTER JOIN student on teacher.age = student.age;
+Result - Mathched recored of both and not matched records from each table
+
+2- LEFT (OUTER) JOIN and RIGHT (OUTER) JOIN
+-------------------------------------------
+select * from Product p LEFT JOIN ORDER o on p.id = r.id;
+- Each row of product table compare with each and every rows of order table.
+- It returns matched recored of table(as many times, it matched with second table)
+- and it returns unmatched records of both tables.
+
+6- CROSS Join
+--------------
+select s.name, t.name from Student s cross join teacher t.
+Result - One recor match with each and every record of teacher table.
+
+
+Union and Union All
+------------------
+Teacher - age - 28,35
+Student - age - 28,21
+
+Select age from teacher 
+UNION 
+select age from student;
+
+UNION - age - 35, 21, 28
+
+UnionAll--
+----------
+Select age from teacher 
+UNION ALL
+select age from student;
+
+UNION ALL - age - 28, 35, 28, 21

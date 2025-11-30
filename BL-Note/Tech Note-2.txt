@@ -1,0 +1,363 @@
+Java 8 - Functional Interface ,Lambda, Stream api, default method , optional, Executor service, Comparator
+	- java reduce function
+	- terminal function
+	Hashmap programming. 
+		Employee object has department. find the no of employees in same department
+		Sorting based value - Normal order and reverse order
+		Letter count from a string
+	- How to call a class constructor using java 8 lambda method reference
+		- (Person::new)
+
+Core Java-
+	- Proxy Design Pattern
+	- Collection - Linkedlist, Array list, Map, Set, Queue
+	- SOLD Design Pattern
+	- OPPS concept- Abstraction, Polymerphism
+	- Multithreading
+	- Immutatible Objext
+	- java io
+	- java nio
+	- Serialization/Deserization
+	- Blocking Queue
+	
+Microservice-
+	-Apigateway
+	-Circuitbreaker - Resilince4j, Hystrix
+	-CQRS design pattern
+	-Loadbalancing
+	-Microservice communication - REST, FignClient, GRPC, WebClient
+	-SAGA design Pattern
+	-Caching
+	
+Sptring - 
+	- Singleton design pattern
+	- Prototype
+	- Annotation- all, qualifier- autowired
+	- DI And IOC
+	- Configuration - Server change,
+	Profile/Properties change-Dev/QA,
+	- Transaction Management
+
+Authorization and Authentication-
+	- Spring Security
+	- JWT
+	- OAuth 1.0
+	- OAuth 2.0	
+	
+Hibernate -
+	- save, persist, merge
+	
+AWS-
+ECS, SQS, Couchbase, S3, 
+	
+------  java 8 programming ---
+	
+------
+concepts to know-
+- Non blocking
+- Master-Slave archicture
+- SSH
+- log stash and kibana tool
+
+------- Java ----------
+## Explain the concept of lazy evaluation in streams
+A- Streams are lazy because intermediate operations are not evaluated until terminal operation is invoked. Each intermediate operation creates a new stream, stores the provided operation/function and return the new stream. The pipeline accumulates these newly created streams.
+
+## How can you read a large file
+
+
+## Intermediate Operations
+	filter() map() flatMap() distinct() sorted() peek() limit() skip()
+   Terminal Operations :
+	forEach() forEachOrdered() toArray() reduce() collect() min() max() count() anyMatch() allMatch() noneMatch()  findFirst() findAny()
+	
+##JFR - Java Flight Recorder is a tool integrated into the Java Virtual Machine (JVM) for collecting diagnostic and profiling data about a running Java application
+
+
+---- Microservice ----
+## How are you implement logging in MS. If you have 10 MS and some error occure in 5th MS. How can we debug
+A- We can have centralize logging mechanism. When requast call to MS-1 it collect logs in log server and transfer to MS-2. If any error occurs MS-5 it call to Error MS and store all the logs.
+
+## How you manage session when request transfer from MS-1 to MS-2
+A- Use Token to store MS Seession. During MS-1 call store the session in centralize DB with token. When call to MS-2, first check Token validity and then get the session data from centralize DB by token.
+
+## Say your MS is having huge load. 1 Lakh user using your MS. How can you check from log for which your has which log
+A- Multiple MS instance will deoloy and each MS instance will have a unique identifire(instance ID)
+
+## What is event sourcing
+
+## Service registry -Eureka service- it register other micreservice instances with ip and port. But if service registery itself is down how to handle
+Ans -  We have have to keep multiple service registery instances. If one goes donw other can use. Like leader and follower
+
+## gateway use - 
+A- This is a single entry point for the micreservices.
+	- Security is implemented here. otherwise we have to implement in all the micreservices which will case huge size of micreservice
+	
+## Role based authentication [Need To Check More]
+## @preauthorize [Need To Check More]
+## Oauth2 Authorization uses JWT auth token [Need To Check More]
+## Octa is third party Authorization and authentication [Need To Check More]
+	okta is authorization server
+## OpenId Connect OIDC for authentication [Need To Check More]
+## ELK stack
+	E- Elastic Search - Store Logs
+		- It allows you to store, search, and analyze large volumes of data quickly
+	L- Log stash - Collect and filter logs of Microservice
+		- collect data from various sources, transform it, and send it to your desired destination.
+	K- Kibana -  Data Visualization and Exploration Tool
+
+## prometheus in microservices [Need To Check More]
+
+## Actuator in microservices - [Need To Check More]
+	- Provides infromation about whole application
+	- provide Health check - includes rediness and liveness
+	
+## Caching in micreservice - [Need To Check More]
+	- @cacheable
+
+
+## Spring Config server - [Need To Check More]
+	-** seperate application store in github for only configutation
+	- Config server internaly ueses rabbit mq - if any changes happends in application (repo) it trigger a evnet to github webhook
+	-- ?? What is github hook
+	-- ?? is config server run in any server
+	
+## Config client [Need To Check More]
+ 
+## CI- CD approch [Need To Check More]
+	- Github approach for CI-CD
+	- CI - Jenkins
+	- CD - Argocd - Argocd which handle all the deployments related to the kubernates
+	- Argocd for continus deployments
+
+## What are the AWS services used for application deployments
+	- Elastic Kubernates, Amazon kubernate
+	- S3 Bucket to store all the log files
+	- Amazon secret manager for storing all the tokens and security relate information
+	- Elastic container registery for storing all the docker images
+	- Amazon ECR - contains images for a particular application
+	
+## deployment process 
+	- Code change
+	- commit code in repo(profile/release branch)
+	- Different pipeline script in jenkins for each profile(different env)
+	- there is webhook inside git repo, wheneve it found any change inside git repo, it trigger a jenkins pipeline
+	- in jenkins pipeline get the latest code and generate a artificat
+	- and do the unit test
+	- sonar code quality and code coverage
+	- once CI is success 
+	- Docker image created and ECR ( Amazon registry)
+	- Another hook created for Argocd(Argocd continously monitor ACR)
+	- Trigger Argo for CD(Argocd fetch the latest image send to Kubernates container)
+	
+## Cahable - Redis Cache
+	- add Redis dependency
+	- add @EnableCaching in spring boot Application class
+	- Add  @Cacheable in get method
+		- by using this annotation, it first time get data from DB and next time it get from cache
+		- @Cacheable(key = "#id",value = "Product") - key is the parameter used in get method to fetch by id - value is value of Hash_Key used in dao class to save and update data
+		-  @Cacheable(key = "#id",value = "Product",unless = "#result.price > 1000") - unless is the condition for to use cache
+	- @CacheEvict(key = "#id",value = "Product")
+		- this used in remove/delete method
+		- if data deleted from table, it remove the recode from cache
+	- @CachePut - used ind update method - if data updated in any record, it update the cache
+	
+	
+	
+	
+
+
+
+
+
+---- Devops ----
+## How you maintain scalebility of your application
+A- Docker image we can configure for load and also in kubernate we can create new pods to maintin the load
+[not clear]
+
+---- KAFKA ----
+## What is the default message size kafka can accept. what will happen if the message size is beyond that
+A- 15MB
+[not clear]
+
+## Replication factor in Kafka?
+
+## kafka retaintion
+
+## Lets assume My producer 100 messages per sec but consumer rececives only 10 msg per sec. At some point it full the queue and not able to push to queue . How can we handle this situtaion
+
+## Consumer read meassage from topic and update in DB. But DB is down. How to manage the data
+
+
+
+
+----- Hibernate ----
+
+## - Lazy loading and eger loading
+Ans- 
+Lazy- 
+- default FetchType in Hibernate is Lazy loading. It means that the associated entity will be fetched only when it is accessed for the first time.
+- It basically used with @OneToMany, @ManyToOne, @OneToOne, or @ManyToMany annotations.
+	Ex- 
+	@Entity
+	public class Employee { 
+		@OneToOne(fetch = FetchType.LAZY) 
+		@JoinColumn(name = "address_id") 
+		private Address address; 
+	  
+		// other fields and methods 
+	}
+	
+	** when we call .getAddress() it query to DB and get the data( in lazy)
+	** In spring boot JPA follow the Hibernate connection
+	
+## Composite key in entity class
+- @EmbeddedId annotation and @Embeddable
+	Ex: -
+	
+	@Embeddable
+	public class BookId implements Serializable {
+		private String author;
+		private String name;
+		// standard getters and setters
+	}
+	
+	@Entity
+	public class Book {
+
+		@EmbeddedId   // this is composite key class
+		private BookId id;
+		private String genre;
+		private Integer price;
+
+		//standard getters and setters
+	}
+	
+	@Repository
+	public interface BookRepository extends JpaRepository<Book, BookId> {
+
+		List<Book> findByIdName(String name);
+
+		List<Book> findByIdAuthor(String author);
+	}
+- It internaly work below
+findByIdName() -> directive "findBy" field "id.name"
+findByIdAuthor() -> directive "findBy" field "id.author"
+
+## L1 and L2 Cache
+- First Level Cache (L1 Cache):
+L1 cache is associated with the Hibernate Session object.
+L1 cache is enabled by default and holds the objects that have been retrieved or saved within the current session.
+When you fetch an entity using Hibernate, it first checks the L1 cache. If the entity is found in the cache, Hibernate returns it directly, avoiding the need to hit the database.
+The L1 cache is transaction-scoped, meaning it is cleared when the transaction associated with the session is committed or rolled back.
+
+- Second Level Cache (L2 Cache):
+
+L2 cache is shared across different sessions in a Hibernate application.
+It operates at the session factory level, making it accessible to multiple sessions within the same application.
+L2 cache stores entities, collections, and query results in a global cache, reducing the number of database hits across sessions.
+Unlike L1 cache, L2 cache survives the session scope and can persist across transactions.
+Hibernate supports various caching providers for L2 cache, such as Ehcache, Hazelcast, Infinispan, and others.
+
+## Hibernate/JPA opbject states- life cycle
+- Transient State:
+	- this is new POJO object 
+	- Not associated with session 
+
+- Persistent State:
+	- In this state object associated with session and DB 
+	- New objects transition to the persistent state when they are saved using the session.save() or session.persist() methods.
+	-  session.get() or session.load() - get data from DB using session and this is in persist state
+	
+- Detached State:
+	-  Session is detached when call - session.evict() or session.clear() methods, or when the session is closed.
+	- Detached objects can be reattached to a new session using methods like session.merge() or session.update() to make them persistent again.
+	
+- Removed (Deleted) State:
+	- When session.delete() method call object moved to Removed state
+
+## get() and load() in hibernate
+	- In hibernate, get() and load() are two methods which is used to fetch data for the given identifier. They both belong to Hibernate session class. Get() method return null, If no row is available in the session cache or the database for the given identifier whereas load() method throws object not found exception
+
+
+Http Resonse code:
+Infrimational Response Code:
+	100 - Continue
+	101 - Switching Protocol
+Successful Response code:
+	200 - OK
+	201 - Created
+	202 - Accepted
+	204- No Content
+Redirect Response:
+	300- Multiple Coice
+	301 - Moved permantly
+	302 - Found
+	303 - See Other
+Clien Error Reponse code:
+	400 - Bad Request 
+	401 - Unauthorized
+	403 - Forbidden
+	404 - Resouce Not Found 
+	409 - Conflict
+Server Error Response Code:
+	500 - Internal server error - issue in server or application code
+	501 - Not implemented - service not implemented 
+	502- Bad gateway
+	503- Service not available - service not availble in server
+	504 - Gateway timeout
+	
+
+
+
+-------------
+
+Technical Jargons--
+----------
+
+
+Cover few design pattern 
+How to configure high thoughput architecture 
+Hibernate - one to many, one to one configure 
+How to manage Synch communicatoin in MS/applicatoin
+load balancing - client site and server site
+ssl handsake
+oswap principle - vernabilibily - sql 
+cross scripting - 
+cosscriptin requst forgeriri
+broken access contorl
+12 factor app principle// not required now
+
+[how to configure you api should use by only permited application]
+
+PMD - Code analyzer. It finds common programming flaws like unused variables, empty catch blocks, unnecessary object creation, and so forth.
+
+KDS programming
+dsa with java
+
+anagram program in java 
+
+
+junit 
+ mokito 
+ spy
+ 
+open ssl - oauth 2
+
+Search engine-
+	Elastic Search
+	EKS
+	ELK
+	apache solar
+	apache lucene
+
+kafka 
+consumer group
+
+Hey Good Afternoon
+I am Subrat, I will be your interviewer today.
+let me give a intro abut me. I have 10years of exp. Currenly working as a backend lead engineer using technology java, spring, spring boot, Microservices archicture.
+
+
+
+

@@ -1,0 +1,94 @@
+Go--
+------
+Golang over Java-
+Performance-
+	- Go does not need any virtual machine. It directly compiles the code into binary code before executing the program
+Ease of Coding-
+	- Easy to code, learn
+	- Golang code syntax is simpler than Java
+	- Not much overehead to use library like java
+Cross-Platform Development-
+	- it compiles binary files separately for each platform. Java is platform-independent.
+Memory Management-
+	- Go's garbage collection method is more optimized
+	
+	
+
+package main
+
+import "fmt"
+
+func main() {
+	var i int
+	i = 10
+
+	fmt.Println(i)
+	fmt.Println("Hello, World")
+}
+
+- Different ways to define variables
+	- var i int //decalre variable - 1
+	- var t int = 10	//decalre variable - 2
+	- j := 10  // decalre variable - 3
+	- float32, float64, bool
+	- string
+- if you dont use declared variable in code, it will give compilation error
+- if package level variable defind with small letter it will be visible to that package only, if it defined by upper case, it will be visible globaly
+- Block level variables are visible to that block only
+- No private variable
+- var i int = 42
+	var j string
+	j = strconv.Itoa(i) // this convert integer to string
+
+--Array
+- grades :=[3]int{97,98,99} // declare array
+- var names [3] String
+	names[0] = "Ravi" // adding element to array
+	printf array does not maintain order
+	
+	len(names) // give size of array
+
+-- Slice
+- a := []int{1,2,8} // slice - no need to mention length
+- cap(a) // capacity of a -3 - this method available only in slice 
+
+-- Map
+- declaration -
+	statePopulation := map[String]int {
+		"Karnataka" : 1233,
+		"Odisha" : 3322
+	}
+	
+-- Fuction
+- function name starts with samll letter is local method and starts with capital letter is global method
+- function body start parenthesis should start in same line with function name
+
+- goroutine
+- pointer
+- cannels
+
+	
+--------------------------------------------------------------------------
+//Download go lang source code
+go get golang.org/x/tools/cmd/godoc	
+
+// create doc
+godoc -http=localhost:8080
+
+//Run go files
+go run .\demo\main.go
+
+init() call at the inititlization of files
+
+goroutines use for concurrency programming. It is light weight 
+Channels - provides communication between goroutines
+	Assigned using make
+	myChannel :=make(chan int, 1000)
+	myChannel <- 10
+	
+Confinement - confine variable is only for one goroutine
+
+	
+	
+	
+	

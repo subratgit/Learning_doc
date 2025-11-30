@@ -1,0 +1,197 @@
+List comprshion
+
+Create Telecom Applications using Python Object Oriented Programming features. Application should have Constructor Class , Customer Class, Telecom Employee Class . Use Inheritance Concept to implement Telecom Application.
+
+Create fibonance sequecnce
+factorial of n no
+
+
+for loop, while loop iteration
+if, elif, else
+parallel assignment
+variable argument
+list, touple, dict
+
+----------
+function programming
+Lamda, set, map, filter, sort, reverse, zip
+list and dictonary comprshion
+Object oriented programming
+
+---------------
+Bult-In Functions:
+lambda —> It is used to create anonymous function
+Map —> first parameter is function and second parameter is any number of arguments
+List —> first parameter is function and second parameter is one argument
+Set —> if we use set for a list of records, it will remove duplicate and also it will be unordered
+Set Methods —> intersection, union, add
+
+
+--
+Python is a interpreter language
+Loop - for loop, while loop  and its iteration
+Condition block - if, elif, else
+parallel assignment
+variable argument
+list, touple, dict
+function programming
+Lamda, set, map, filter, sort, reverse, zip
+list and dictonary comprshion
+Object oriented programming
+
+-------
+6th-7th-8th 13th-14th-15th-16th May – Advance Python
+17th May- Capstone Project by attendees themselves
+ 
+20th-21st-22nd-23rd-24th-27th- 28th May- Advance Go Lang
+29th May- Capstone Project by attendees themselves
+ 
+30th May- Report and Review submission
+
+----------------
+Process - a execution is process
+GIL - Global Interpreter Lock
+	Limits threading operation
+	parallel execution restricted
+	Ensure only one thred execution
+	in the intepreter only one
+
+CPU base parallel - multi process
+I/O based parallel - threading
+
+Disadvantage
+- GIL
+- complexity
+- race condition
+- debugging
+
+Adv
+- Isolation -
+- multiple thread
+
+Locks - Mutex - only one thread can access at one time
+Semaphores - 
+Condition Variable - waiting thread
+
+concurrency.threadPool
+concurrency controll 
+
+-----
+pytest
+command to run
+pytest file.py -v  // give details of the test
+pytest file.py -q
+pytest file.py::testmethod  // only one menthod
+- pytest give a report of all the test case in a folder
+
+pytest allows marker
+marker allow to look for a specific test
+marker are apllied 
+
+pytest -m great .\test_compare_copy.py -v
+
+pytest -m great .\test_compare_copy.py -v
+
+pytest -m great .\test_compare*.py -v
+
+
+------- 
+fixture
+future are function which will run before each test function to which applied
+
+pytest -k divisible -v
+
+---
+unittest.mock  - copy of real object
+
+----------
+flask
+jinja2 template in html code {{% for..}}
+sqlalchemy  - orm provides to connect any database
+pip install --upgrade flask_sqlalchemy
+
+DB - sqlite3 - inbuild in python(like h2 db in springboot)
+
+--
+flask insrallation
+created get api using flask
+Createed Jinja2 template in html for UI page
+send data from api to html and render through render_template 
+used condition and iterate data jinja2 template
+connected to data base sqlite using sqlalchemy
+Create table, insert data, read data from table
+
+-----
+Driver to connect postgress db
+	pip install psycopg2-binary
+
+Updae pip
+	pip install ––upgrade pip
+	
+python -m pip install —upgrade pip
+
+CREATE TABLE services (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    customer_id INTEGER REFERENCES customers(id) NOT NULL
+);
+
+select * from services;
+
+-----------
+Flask Blueprints
+	organize flask app into small resuable components
+	create a modula structure
+	
+	ddfine groups of routes
+	templates
+	static files
+	
+register buleprints
+	from.auth.views import auth_bp
+	
+modularity
+seperation of concern
+scalability
+
+
+1. Worked on the connection between Postgres and .py files
+2. Creating the tables and inserting the records into table to Postgres DB
+3. Customer CRUD operations (GET, POST) 
+4. How to create the directory structure
+
+capstone project
+user manageemtnt
+user manageemtnt - Authentication, login, logout, user roles
+plans and submission - Create, edit, delete telecom plans
+Subscription manageemtnt
+Billing and payment
+Customer support
+Reporting analutics
+Security and compliance
+
+
+Decorators
+Special function which adds additional functionaliy
+Ex- Basic model car, you add new feature like change color, add aloy wheel
+
+-- flask Migrate
+ pip install flask-login
+ 
+Flask-WTF - web security - from handling and validateoin
+pip install flask-wtf 
+flask_wtf.csrf - csrf security
+
+Flask-restful
+pip install Flask-RESTful
+
+production servers - wsgi server, Gunicon
+web servers
+pip install pytest-flask
+
+Flask-Login - user session management
+Flask-Migrate - Database migration for managing changes to the database schema
+
+
+surendra.panpaliya@gmail.com
+

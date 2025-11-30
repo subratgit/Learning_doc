@@ -1,0 +1,127 @@
+GRPC
+----
+- it ueses Http 2 protocol
+	Adv of Http2
+		- uses byte code instead json or text
+		- Heder compression  //No header
+		- Server push
+		- Multiplexing
+		- prioritization
+		- Bidirectional/Async communication
+		
+- gRPC uses protocol buffer
+- it reduces the size of response data than JSON/XML
+- basicaly it encode and decode the data
+- it supports inbuild streaming
+	- it sends data when process complete rather waiting the complete data
+	- Ex- if you request for 100 records, it send the response when 1st record complete and again send for 2nd record and so on
+- it can also cancel the request at any point of time
+	during process of the request, we can cancel the request. means it will not send further data
+	
+- brew install grpcurl
+- Grpc curl commands
+	- grpcurl --plaintext localhost:9090 list // provides all grpc service endpoints
+	- grpcurl --plaintext localhost:9090 list <<service_name>> // provides all the sercice method names
+	- grpcurl --plaintext -d '{"message":"How are you"}' localhost:9090 list <<service_name>>/<<method_name>>
+- GRPC is faster than others(Http, Rest), because it does binary transfer
+- Model objects can not override equals method in gRPC
+- We can gernerate file in various languages(like js, php, python, rubby, java..)
+	in Json data represent in below ways. Here it takes more bytes in memory
+		"name":"Ram",
+		"Age" : 10
+	in protobuf data represents in below ways. 
+		string name=1  //1 is tag, we can assig any no as tag
+		int age=2
+		
+		how value store
+		1=Ram
+		2=10
+		1- represents for name
+		2- represents for age
+		hence, grpc takes less byte to store data
+		Note - tag value  1 to 15 takes 1 byte memory but 16 to 2047 takes 2 byte memory. Hence frequently used properties should use 1 to 15 tag.
+## How it used in application
+	- gRPC is used for inter communication of microservices
+	- UI call to api controller by rest call
+	- app call to other remote service using gRPC(other api). This way it communication to other microservices
+
+## RPC StreamS types
+- Unary - Client send one request to Server and receive one response from server
+	- Ex- Client request for bank a/c balance
+- Server-Streaming - Client send one request to Server and receive multiple response from server
+		- Ex- seraching one item from flipkart, you will get many response(pagination) when you drag screen down.
+		2- Withdraw cash from bank ATM - request 2300/-, it gives 4 500 note and 1 200 note and 1 100 note
+- Client-Streaming - Client send multiple requests to Server and receive only one response from server
+	Ex- Deposite cash in bank - 2300/- send multiple notes 
+		//Client stream
+	rpc withdrawAmout(BalanceCheckRequest) returns(stream Money);
+	
+- Bidirectional-Streaming - Client send multiple requests to Server and receive multiple responses from server. does not mean that both no of requests and responses would same.
+	Ex- transfer money - 
+
+
+## Grpc Client Ex
+	ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",6565)
+				.usePlaintext()
+				.build();
+	//blockingStub -- synchronous call
+	BankServiceGrpc.BankServiceBlockingStub blockingStub = BankServiceGrpc.newBlockingStub(channel);
+	Balance balance = blockingStub.getBalance(request);
+
+## asychrous call service
+	We need one callback service
+	//BankServiceStub -- asynchronous call
+	BankServiceGrpc.BankServiceStub bankServiceStub = BankServiceGrpc.newStub(channel);
+	bankServiceStub.withdrawAmout(request, new MoneyStreamingResponse);
+	
+	//MoneyStreamingResponse - create another class implements StreamObserver
+	
+## Header Compression
+	- HTTP/2 supports a new dedicated header compression algorithm, called HPACK.
+	- HPACK was developed with attacks like CRIME in mind
+	- it uses these three methods of compression:
+		- Static Dictionary: A predefined dictionary of 61 commonly used header fields
+			- *Some common header used in most of the requsts. those we can compress
+		
+		- Dynamic Dictionary: A list of actual headers that were encountered during the connection.
+			- *Connection related headers can be compressed
+			
+		- Huffman Encoding: A static Huffman code can be used to encode any string: name or value. 
+			-the highest compression ratio achievable is 8:5 (or 37.5% smaller)
+
+	- Request headers get better compression than response header, due to much higher duplication in the headers.
+
+## Server push
+	- HTTP/2 Server Push allows for additional assets to be directly pushed to a visitor's browser without the need for subsequent HTTP requests to fetch them.
+	- *When server get request from client, server autometically sends the required additioinal informations for that request
+	- Ex- Client send request for abc.html, server send required response for abc.html and along that send required css and image for that page without request
+	- Ex- send notificaton from server to client
+
+## Multiplexing
+- multiplexing allows your Browser to fire off multiple requests at once on the same connection and receive the requests back in any order.
+
+## Prioritization
+- When client send request, if service takes long time to provide the complete response, then server send the data of priority components
+
+## Binary protocal operation
+
+
+
+ascync call
+client program
+
+
+
+
+Question -
+1- Security management
+	- Interceptor and filter
+2- how we create service uri
+3- how protofile useful
+4- how bidirectional works in gRPC
+5- 
+
+* Oswap principle - 
+	Broken swa
+	
+
